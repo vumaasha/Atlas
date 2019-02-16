@@ -14,7 +14,9 @@ Structure of the `_.json` file:
 
          |--title : title of the image
 
-         |--sentences : taxonomy represented as tokens
+         |--sentences 
+         
+            |--tokens : taxonomy represented as tokens
 
          |--image_url : url of image
 
