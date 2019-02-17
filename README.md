@@ -21,5 +21,8 @@ To automatically download the images to the destination folder (i.e dataset fold
 
 ## 2. Model
 ### Data Cleaning - Segregating Zoomed and Normal images
-Observe that the downloaded images vary in size and scale. In this section of code, we will be solving the issue related with scale of the image. For the model to learn, we will require images of apparel that is normal i.e not zoomed. With zoomed images, it is difficult to identify the apparel as a zoomed image is a close-up snap and the shape associated with the apparel cannot be observed clearly.
+Observe that the downloaded images vary in size and scale. In this section of code, we will be solving the issue related with scale of the image. 
+
+For the model to learn, we will require images of apparel that is normal i.e not zoomed. With zoomed images, it is difficult to identify the apparel as a zoomed image is a close-up snap and the shape associated with the apparel cannot be observed clearly.
+
 Before running the zoomed_vs_normal model, we will first have to generate the h5 file associated with it. 
