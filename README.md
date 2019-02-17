@@ -11,7 +11,11 @@ The code has been segregated into 2 parts:
 
 
 ## 1. Dataset - Data Collection
-You will be creating the dataset of images required to run the model. The folder size containing the images is too large to upload on Github. Instead, we have added a _.json file that contains the image urls. To automatically download the images to the destination folder (i.e dataset folder), run the _script.py .
+You will be creating the dataset of images required to run the model.
+
+The folder size containing the images is too large to upload on Github. Instead, we have added a _.json file that contains the image urls. 
+
+To automatically download the images to the destination folder (i.e dataset folder), run the _script.py .
 
 `python _script.py`
 
