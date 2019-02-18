@@ -2,6 +2,9 @@
 
 This project aims to predict the taxonomy of an image through Attention Sequence model.
 
+## Architecture Blueprint
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/blueprint.png "Architecture")
+
 The code has been segregated into 2 parts:
 1. Dataset 
     - Data Collection
