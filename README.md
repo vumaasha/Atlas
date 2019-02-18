@@ -13,11 +13,11 @@ There are 2 ways you can use this Project:
 1. Path 1
     1. [Use ATLAS Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
     
-    /# of images: 200,000
+    No. of images: 200,000
     
-    /# of apparel categories: 50
+    No. of apparel categories: 50
     
-    /# of e-commerce sources used to scrape images: 13
+    No. of e-commerce sources used to scrape images: 13
     
     Images include apparel for: Men & Women
     
