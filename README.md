@@ -12,13 +12,13 @@ There are 2 ways you can use this Project:
 
 1. Path 1
     1. [Use Atlas Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-    2. [Run the pre-trained model](../blob/master/models/apparel_classification/README.md)
+    2. [Run the pre-trained model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
 
 2. Path 2
-    1. [Use Custom Dataset](../blob/master/dataset/README.md)
+    1. [Use Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
     2. Run model to generate new Taxonomy
-      * [Clean Dataset](../blob/master/models/normal_vs_zoomed/README.md)
-      * [Run Model](../blob/master/models/apparel_classification/README.md)
+      * [Clean Dataset](https://github.com/vumaasha/Atlas/blob/master/models/normal_vs_zoomed/README.md)
+      * [Run Model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
       
     
 The code has been segregated into 2 parts:
