@@ -30,9 +30,9 @@ There are 2 ways you can use this Project:
 *** 
 
 2. Path 2
-    1. [Build your own Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+    1. [Build your own Taxonomy and Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
     
-        * If you would like to predict the taxonomy of images outside of the 50 categories we have collected, you can use our existing crawlers to modify and include specific categories.
+        * For your own taxonomy, outside of the 50 categories we have collected, you can use our existing crawlers to modify and include specific categories.
         
         * Alternatively, you can use your own image corpus from other sources and run the model.     
            
