@@ -13,17 +13,36 @@ There are 2 ways you can use this Project:
 1. Path 1
     1. [Use ATLAS Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
     
-    We have built our own dataset of apparel images from 13 e-commerce websites. You can use our dataset either to train on this Attention model or for other Computer Vision Applications.
+    /# of images: 200,000
+    
+    /# of apparel categories: 50
+    
+    /# of e-commerce sources used to scrape images: 13
+    
+    Images include apparel for: Men & Women
+    
+    You can download and use our dataset either to train on this Attention model or for other Computer Vision Applications.
     
     2. [Run the pre-trained model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
 
-The model uses Attention Technique with Constrained Beam Search to predict taxonomy of the given apparel and obtained f-score of 0.88.
+    Run the model to predict the taxonomy of the given apparel along with the output image of the Attention technique.
 
+*** 
 
 2. Path 2
-    1. [Use Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+    1. [Build your own Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+    
+        * If you would like to predict the taxonomy of images outside of the 50 categories we have collected, you can use our existing crawlers to modify and include specific categories.
+        
+        * Alternatively, you can use your own image corpus from other sources and run the model.     
+           
     2. Run model to generate new Taxonomy
-       * [Clean Dataset](https://github.com/vumaasha/Atlas/blob/master/models/normal_vs_zoomed/README.md)
+    
+       * [Clean the dataset](https://github.com/vumaasha/Atlas/blob/master/models/normal_vs_zoomed/README.md)
+       
+       The image dataset needs to be cleaned in order to remove any zoomed images. 
+       
        * [Run Model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
+      
       
      
