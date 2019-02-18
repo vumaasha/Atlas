@@ -5,6 +5,22 @@ This project aims to predict the taxonomy of an image through Attention Sequence
 ## Architecture Blueprint
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/blueprint.png "Architecture")
 
+## How do I use this Project?
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/Path.png "Path")
+
+There are 2 ways you can use this Project:
+
+1. Path 1
+    1. [Use Atlas Dataset](../blob/master/dataset/README.md)
+    2. [Run the pre-trained model](../blob/master/models/apparel_classification/README.md)
+
+2. Path 2
+    1. [Use Custom Dataset](../blob/master/dataset/README.md)
+    2. Run model to generate new Taxonomy
+      * [Clean Dataset](../blob/master/models/normal_vs_zoomed/README.md)
+      * [Run Model](../blob/master/models/apparel_classification/README.md)
+      
+    
 The code has been segregated into 2 parts:
 1. Dataset 
     - Data Collection
