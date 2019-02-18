@@ -11,7 +11,7 @@ This project aims to predict the taxonomy of an image through Attention Sequence
 There are 2 ways you can use this Project:
 
 1. Path 1
-    1. [Use Atlas Dataset](../blob/master/dataset/README.md)
+    1. [Use Atlas Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
     2. [Run the pre-trained model](../blob/master/models/apparel_classification/README.md)
 
 2. Path 2
