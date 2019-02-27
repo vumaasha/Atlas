@@ -10,7 +10,7 @@ Attention Netowork focuses on relevant parts of the image while generating its t
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_attention.jpg "Attention")
 ### Constrained Beam Search 
 CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy.
-
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_cbs.jpg "Constrained Beam Search")
 
 ## [How does it work?](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
 You can clone our repository and run this project on your CPU/GPU and mimic the results we obtained.
