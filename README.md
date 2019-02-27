@@ -3,16 +3,44 @@
 ## What does this project do?
 * Performs automatic taxonomy prediction of Clothing images
 * Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/archi.png "Architecture")
+
 ## What concepts are used?
-### Attention Sequence modeling
-Attention Netowork focuses on relevant parts of the image while generating its taxonomy sequence by sequence(word by word).
+We use attention based neural network Encoder-Decoder model to generate the sequences in the taxonomy. 
+### Encoder-Decoder Model
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_encoder_decoder.jpg "encoder decoder")
+#### Encoder
+The Encoder unit is a 101 layered Residual Network(ResNet) trained on the ImageNet classification that converts the input image into a fixed size vector.
+
+Since the input images are of variable sizes, we use CNN to produce fixed size vectors. 
+
+The images are resized by adding a 2D adaptive average pooling layer. This enables the encoder to accept images of variable sizes. 
+
+The final encoding produced will have the dimensions batch size x 14 x 14 x 2048.
+
+#### Decoder
+This is the part of the model that predicts sequences for the taxonomy. 
+
+The Decoder is a combination of Long Short-Term Memory(LSTM) along with Attention Network. 
+
+It combines combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
+
+
+
+### Attention Sequence Modeling
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_attention.jpg "Attention")
+
+ 
+Attention Network focuses on relevant parts of the image while generating its taxonomy sequence by sequence(word by word).
+
 ### Constrained Beam Search 
-CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy.
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_cbs.jpg "Constrained Beam Search")
+We also extend our model by introducing constrained beam search on top of it to restrict the model from generating category paths that are not predefined in our taxonomy. 
+
+CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy.
+
 
 ## [How does it work?](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/archi.png "Architecture")
 You can clone our repository and run this project on your CPU/GPU and mimic the results we obtained.
 
 ## Can I modify the model?
