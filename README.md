@@ -3,14 +3,15 @@
 ## What does this project do?
 * Performs automatic taxonomy prediction of Clothing images
 * Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
-
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/archi.png "Architecture")
 ## What concepts are used?
 ### Attention Sequence modeling
 Attention Netowork focuses on relevant parts of the image while generating its taxonomy sequence by sequence(word by word).
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_attention.jpg "Attention")
 ### Constrained Beam Search 
-CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy
+CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy.
 
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/archi.png "Architecture")
+
 ## [How does it work?](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
 You can clone our repository and run this project on your CPU/GPU and mimic the results we obtained.
 
