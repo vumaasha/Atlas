@@ -1,47 +1,25 @@
 # ATLAS - Constrained Beam Search Based Sequence model for product category classification
 
-This project aims to predict the taxonomy of an image through Attention Sequence model. 
+## What does this project do?
+* Performs automatic taxonomy prediction of Clothing images
+* Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
+
+## What concepts are used?
+### Attention Sequence modeling
+Attention Netowork focuses on relevant parts of the image while generating its taxonomy sequence by sequence(word by word).
+### Constrained Beam Search 
+CBS limits the sequences chosen by the Decoder unit of the Encode-Decoder model in order to generate the most optimal sequence for the taxonomy
 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/archi.png "Architecture")
+## [How does it work?](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
+You can clone our repository and run this project on your CPU/GPU and mimic the results we obtained.
 
-## How do I use this Project?
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/Path.png "Path")
+## Can I modify the model?
+Yes, you can re-train the model and perform the predictions on the new model by either
+* [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+* [using your own custom dataset and then re-training the model](#can-i-build-my-own-custom-dataset-or-add-additional-categories-to-the-existing-dataset)
 
-There are 2 ways you can use this Project:
-
-1. Path 1
-    1. [Use ATLAS Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-    
-    No. of images: 200,000
-    
-    No. of apparel categories: 50
-    
-    No. of e-commerce sources used to scrape images: 13
-    
-    Images include apparel for: Men & Women
-    
-    You can download and use our dataset either to train on this Attention model or for other Computer Vision Applications.
-    
-    2. [Run the pre-trained model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
-
-    Run the model to predict the taxonomy of the given apparel along with the output image of the Attention technique.
-
-*** 
-
-2. Path 2
-    1. [Build your own Taxonomy and Custom Dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-    
-        * You can use our crawlers and  
-        
-        * Alternatively, you can use your own image corpus from other sources and run the model.     
-           
-    2. Run model to generate new Taxonomy
-    
-       * [Clean the dataset](https://github.com/vumaasha/Atlas/blob/master/models/normal_vs_zoomed/README.md)
-       
-       The image dataset needs to be cleaned in order to remove any zoomed images. 
-       
-       * [Run Model](https://github.com/vumaasha/Atlas/blob/master/models/apparel_classification/README.md)
-      
-      
-     
+## [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+Yes. There are two ways you can do this:
+* Expand categories by using our pre-written crawlers to collect additional images
+* Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
