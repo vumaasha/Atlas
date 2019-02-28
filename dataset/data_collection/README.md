@@ -1,5 +1,5 @@
 # Data Collection
-This folder contains the crawlers that can be used to collet product data and images from 13 e-commerce websites. 
+This folder contains the crawlers that can be used to collect product data and images from 13 e-commerce websites. 
 
 ## About the Crawlers
 
