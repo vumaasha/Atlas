@@ -14,7 +14,12 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
     - [Setting up the project](#setting-up-the-project)
     - [Predicting using Product Categorization model](#predicting-using-product-categorization-model)
 - [Concepts Overview](#concepts-overview)
-- [Next Steps](#next-steps)
+- [Implementation](#implementation)
+    - [Taxonomy Generation](#taxonomy-generation)
+    - [Data Collection](#data-collection)
+    - [Data Cleaning](#data-cleaning)
+    - [Model Training and Prediction](#model-training-and-prediction)
+- [FAQs](#faqs)
 - [Authors](#authors)
 - [Acknowledgements](#acknowledgements)
 - [Reference](#reference)
@@ -59,14 +64,52 @@ We use attention based neural network Encoder-Decoder model to generate the sequ
 
 * **Constrained Beam Search** - Constrained Beam Search restricts the model from generating category paths that are not predefined in our taxonomy.  It limits the sequences chosen by the Decoder in order to generate category paths within the taxonomy.
 
+## Implementation
+### Taxonomy Generation
+We gathered taxonomy for the clothing top level category from popular Indian e-commerce fashion sites. We analyzed popular products, niche, and premium clothing products across these stores and developed our taxonomy with 52 category paths. The list of 52 category paths and additional details can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#about-taxonomy)
 
-## Next Steps
-### Can I modify the model?
+### Data Collection
+For all categories in taxonomy tree, we collected product data and its images from popular Indian E-commerce stores. Web scraping tools like Scrapy and Selenium were used to extract the product title, breadcrumb, image and price of each product.
+Check out this [section](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection) to know more about our data collection strategy for **_Atlas_** dataset.
+
+The dataset, **_Atlas_**, we used for training our model is a high-quality product taxonomy dataset focusing on clothing products. It contains **183,996 images** under 52 clothing categories.
+
+We provide a JSON file `coresdataset19.json` which has data and URL of the images for 183,996 products. A sample record from the JSON is shown below
+```
+{'filename': 'euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpeg', 
+'title': "euro fashion\n men's cotton brief (pack of  3 )", 
+'sentences': [{'tokens': ['Men', 'Inner Wear', 'Underwear']}], 
+'image_url': 'https://images.voonik.com/01993582/euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpg?1522053196', 'split': 'train'}
+```
+
+Run `dataset/create_dataset.py` which crawls the images from all the `image_url` in JSON and creates our **_Atlas_** dataset
+```
+python dataset/create_dataset.py -m atlas 
+```
+
+### Data Cleaning
+After collecting data, we found that many product listing also included a zoomed in images that display intrinsic details such as the texture of the fabric, brand labels, button, and pocket styles. These zoomed in images would drastically affect the quality of the dataset. We automated the process of filtering out the noisy images with the help of a simple 3 layer CNN based classification model
+
+More details about the architecture of CNN Model and how we used it to clean our dataset can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/normal_vs_zoomed).
+
+**Note:** Our Atlas dataset generated in the above section is already cleaned. No need to apply this Zoomed Vs Normal model on the dataset.
+
+### Model Training and Prediction
+We approach the product categorization problem as a sequence prediction problem by leveraging the dependency between each level in the category path. We use attention based neural network Encoder-Decoder architecture to generate sequences. 
+
+Encoder is a 101 layered Residual Network(ResNet) trained on the ImageNet classification task which converts the input image to a fixed size vector. Decoder is a combination of Long Short-Term Memory(LSTM) along with attention network which combines the encoder output and attention weights to predict category paths as sequences. 
+
+We also extend our model by introducing constrained beam search on top of it to restrict the model from generating category paths that are not predefined in our taxonomy. 
+
+More details and procedures on model training can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization)
+
+## FAQs
+#### Can I modify the model?
 Yes, you can re-train the model and perform the predictions on the new model by either
 * [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
 * [using your own custom dataset and then re-training the model](#can-i-build-my-own-custom-dataset-or-add-additional-categories-to-the-existing-dataset)
 
-### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+#### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
 Yes. There are two ways you can do this:
 * Expand categories by using our pre-written crawlers to collect additional images
 * Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
