@@ -73,8 +73,8 @@ Yes. There are two ways you can do this:
 
 ## Authors
 * [Venkatesh Umaashankar](https://github.com/vumaasha)
-* Girish Shanmugam S
-* Aditi Prakash
+* [Girish Shanmugam S](https://github.com/GirishShanmugam)
+* [Aditi Prakash](https://github.com/aditiprakash)
 
 See also the list of [contributors](https://github.com/vumaasha/Atlas/graphs/contributors) who participated in this project.
 
