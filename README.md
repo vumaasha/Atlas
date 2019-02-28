@@ -6,6 +6,25 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 * Performs automatic taxonomy prediction of Clothing images
 * Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
 
+:star: Star us on GitHub — it helps!
+
+## Table of contents
+
+- [Getting started](#getting-started)
+    - [Setting up the project](#setting-up-the-project)
+    - [Predicting using Product Categorization model](#predicting-using-product-categorization-model)
+- [Concepts Overview](#concepts-overview)
+    - [Encoder](#encoder)
+    - [Decoder](#decoder)
+    - [Attention](#attention)
+    - [Constrained Beam Search](#constrained-beam-search)
+- [Next Steps](#next-steps)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
+- [Reference](#reference)
+- [License](#license)
+
+
 ## Getting started
 ### Setting up the project
 * Clone this repository to your local machine
@@ -59,3 +78,19 @@ Yes, you can re-train the model and perform the predictions on the new model by 
 Yes. There are two ways you can do this:
 * Expand categories by using our pre-written crawlers to collect additional images
 * Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
+
+## Authors
+* Venkatesh Umaashankar
+* Girish Shanmugam S
+* Aditi Prakash
+
+See also the list of (contributors)[https://github.com/vumaasha/Atlas/graphs/contributors] who participated in this project.
+
+## Acknowledgements
+
+
+## Reference
+If you use this code as part of any published research, please acknowledge the following paper (it encourages researchers who publish their code!)
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
