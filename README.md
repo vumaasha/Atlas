@@ -7,17 +7,22 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 * Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
 
 ## Getting started
+### Setting up the project
+* Clone this repository to your local machine
 
-### Prerequisites
+* Create a virtual environment named `atlas` and install all the project's dependencies
+listed in `requirements.txt`
+
 
 ### Predicting using Product Categorization model
 Follow these steps to predict the category path for a product using pur pretrained product categoristion model: 
-1. Clone this repo to your local machine
-2. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view]).
-3. Switch to `models/product_categorization` directory
-4. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
+1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view]).
+2. Switch to `models/product_categorization` directory
+3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 
-`python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='path/to/BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5`
+```
+python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='path/to/BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5
+```
 
 ![](./img/prediction_1.png)
 
@@ -28,24 +33,23 @@ Similarly you can predict for other images using this command, by changing the p
 Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/apparel_classification)
 
 
-### Concepts Overview
+## Concepts Overview
 We use attention based neural network Encoder-Decoder model to generate the sequences in the taxonomy. 
 
-#### Encoder-Decoder Model
-#### Encoder
+### Encoder
 The Encoder is a 101 layered Residual Network(ResNet) trained on the ImageNet classification that converts the input image into a fixed size vector.
 
-#### Decoder
+### Decoder
 The Decoder is a combination of Long Short-Term Memory(LSTM) along with Attention Network. This is the part of the model that predicts sequences for the taxonomy. It combines combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
 
-#### Attention Sequence Modeling
+## Attention 
 Attention Network learns which part of the image has to be focused to predict the next level in the category path while performing the sequence classification task.
 
-#### Constrained Beam Search 
+### Constrained Beam Search 
 Constrained Beam Search restricts the model from generating category paths that are not predefined in our taxonomy.  It limits the sequences chosen by the Decoder in order to generate category paths within the taxonomy.
 
 
-### Next Steps
+## Next Steps
 ### Can I modify the model?
 Yes, you can re-train the model and perform the predictions on the new model by either
 * [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
