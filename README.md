@@ -14,10 +14,6 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
     - [Setting up the project](#setting-up-the-project)
     - [Predicting using Product Categorization model](#predicting-using-product-categorization-model)
 - [Concepts Overview](#concepts-overview)
-    - [Encoder](#encoder)
-    - [Decoder](#decoder)
-    - [Attention](#attention)
-    - [Constrained Beam Search](#constrained-beam-search)
 - [Next Steps](#next-steps)
 - [Authors](#authors)
 - [Acknowledgements](#acknowledgements)
@@ -55,17 +51,13 @@ Few more sample predictions can be found in this [section](https://github.com/vu
 ## Concepts Overview
 We use attention based neural network Encoder-Decoder model to generate the sequences in the taxonomy. 
 
-### Encoder
-The Encoder is a 101 layered Residual Network(ResNet) trained on the ImageNet classification that converts the input image into a fixed size vector.
+* **Encoder** - The Encoder is a **_101 layered Residual Network(ResNet)_** trained on the ImageNet classification that converts the input image into a fixed size vector.
 
-### Decoder
-The Decoder is a combination of Long Short-Term Memory(LSTM) along with Attention Network. This is the part of the model that predicts sequences for the taxonomy. It combines combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
+* **Decoder** - The Decoder is a combination of **_Long Short-Term Memory(LSTM)_** along with Attention Network. This is the part of the model that predicts sequences for the taxonomy. It combines combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
 
-## Attention 
-Attention Network learns which part of the image has to be focused to predict the next level in the category path while performing the sequence classification task.
+* **Attention** - Attention Network learns which part of the image has to be focused to predict the next level in the category path while performing the sequence classification task.
 
-### Constrained Beam Search 
-Constrained Beam Search restricts the model from generating category paths that are not predefined in our taxonomy.  It limits the sequences chosen by the Decoder in order to generate category paths within the taxonomy.
+* **Constrained Beam Search** - Constrained Beam Search restricts the model from generating category paths that are not predefined in our taxonomy.  It limits the sequences chosen by the Decoder in order to generate category paths within the taxonomy.
 
 
 ## Next Steps
@@ -84,7 +76,7 @@ Yes. There are two ways you can do this:
 * Girish Shanmugam S
 * Aditi Prakash
 
-See also the list of (contributors)[https://github.com/vumaasha/Atlas/graphs/contributors] who participated in this project.
+See also the list of [contributors](https://github.com/vumaasha/Atlas/graphs/contributors) who participated in this project.
 
 ## Acknowledgements
 
