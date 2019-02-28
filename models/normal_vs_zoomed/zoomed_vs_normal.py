@@ -8,7 +8,6 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.models import Sequential
 from keras.preprocessing.image import img_to_array, load_img
 from sklearn.metrics.classification import classification_report
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -29,15 +28,19 @@ def prepare_data(data_folder, img_width, img_height):
     images = glob.glob(data_folder + '/**/*jpg')
     images_series = pd.Series(images)
     labels = images_series.apply(lambda x: x.split('/')[-2])
+
     le = LabelEncoder()
     y = le.fit_transform(labels.values)
     print("{} classes were found:{}".format(len(le.classes_), le.classes_))
+
     dataset = np.ndarray(shape=(len(images_series), img_height, img_width, 3),
                          dtype=np.float32)
+
     for ix, path in images_series.iteritems():
         dataset[ix] = read_image(path)
     print("Total number of images in the dataset: {}".format(dataset.shape[0]))
     print("Dimensions of images in the dataset: {}".format(dataset.shape[1:]))
+
     return dataset, y
 
 
