@@ -36,7 +36,7 @@ listed in `requirements.txt`
 
 ### Predicting using Product Categorization model
 Follow these steps to predict the category path for a product using pur pretrained product categoristion model: 
-1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view]).
+1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing).
 2. Switch to `models/product_categorization` directory
 3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 
@@ -50,7 +50,7 @@ Our pre-trained model predicts the category path and displays an output image th
 
 Similarly you can predict for other images using this command, by changing the path in `--img` parameter to point to your image location.
 
-Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/apparel_classification)
+Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization)
 
 
 ## Concepts Overview
@@ -58,7 +58,7 @@ We use attention based neural network Encoder-Decoder model to generate the sequ
 
 * **Encoder** - The Encoder is a **_101 layered Residual Network(ResNet)_** trained on the ImageNet classification that converts the input image into a fixed size vector.
 
-* **Decoder** - The Decoder is a combination of **_Long Short-Term Memory(LSTM)_** along with Attention Network. This is the part of the model that predicts sequences for the taxonomy. It combines combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
+* **Decoder** - The Decoder is a combination of **_Long Short-Term Memory(LSTM)_** along with Attention Network. This is the part of the model that predicts sequences for the taxonomy. It combines the output from the encoder and attention weights to predict category paths as sequences for the taxonomy. 
 
 * **Attention** - Attention Network learns which part of the image has to be focused to predict the next level in the category path while performing the sequence classification task.
 
