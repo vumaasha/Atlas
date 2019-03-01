@@ -1,10 +1,8 @@
 # Datasets
 
-We have provided 2 datasets:
+We have curated 2 datasets:
 
-1. Atlas
-
-This dataset contains the 
+1. Atlas : This dataset contains the 
 
 
 2. Zoomed vs Normal
