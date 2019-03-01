@@ -15,7 +15,7 @@ class BollywoodKart(scrapy.Spider):
         }
     }
 
-    input_csv_file = 'IndianClothesWomen.csv'  # csv file containing the taxonomy and website source URL's
+    input_csv_file = 'dataset.csv'  # csv file containing the taxonomy and website source URL's
     source_urls_col = 'BollywoodKart'  # Column name having the source URL's in CSV file
     taxonomy_col = 'Taxonomy'  # Column name having the taxonomy of the product
 
@@ -56,7 +56,7 @@ class BollywoodKart(scrapy.Spider):
 
         image_file_name = product_image_url.split('/')[-1]
         file_path = response.meta['taxonomy'].replace("->",
-                                                      "/") + "/" + self.source_urls_col + "/images/" + image_file_name
+                                                      "_") + "/" + self.source_urls_col + "/images/" + image_file_name
         dict_of_items['taxonomy'] = response.meta['taxonomy']
         dict_of_items['file_path'] = file_path
         json_path = 'images/' + response.meta['taxonomy'].replace("->",
