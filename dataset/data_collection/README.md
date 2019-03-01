@@ -91,3 +91,12 @@ Run the crawler as mentioned [above](#to-run-the-crawlers).
 2. Build a custom dataset
 
 If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). 
+
+
+## FAQ
+
+#### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+Yes. There are two ways you can do this:
+* Expand categories by using our pre-written crawlers to collect additional images
+* Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
+
