@@ -1,13 +1,21 @@
-# Dataset
+# Datasets
 
-## Atlas
+## Table of Contents
+- [Atlas](#atlas)
+ - [Taxonomy Generation](#taxonomy-generation)
+ - [About the atlas Dataset](#about-the-atlas-dataset)
+ - [Generating the Datatset](#generating-the-dataset)
+- [Zoomed Vs Normal](#zoomed-vs-normal)
+- [Source code- Overview](#source-code-overview)
+  
+## 1. Atlas
 
-### Taxonomy Generation
+### 1.1 Taxonomy Generation
 
 While we were scraping images from different e-commerce websites, we noticed that each website had its own taxonomy with varying levels of category path depth. So, to standardize the taxonomy of our image dataset, we built our own taxonomy structure. The category paths are crucial in predicting the taxonomy of a given image. As you can see in the image below, the taxonomy tree of our **Atlas** dataset along with the count of clean images under each category is shown below. The taxonomy tree we have derived goes upto a maximum depth of 3 levels. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_taxonomy_tree.jpg "Taxonomy")
 
-### About the Atlas Dataset
+### 1.2 About the Atlas Dataset
 This dataset contains **183,996** clothing images from 52 categories for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_category_samples.jpg "Sample dataset")
 These images and their corresponding product information were crawled from 13 E-commerce websites. 
@@ -19,7 +27,7 @@ These images and their corresponding product information were crawled from 13 E-
 
 To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection).
 
-### Generating the dataset
+### 1.3 Generating the Dataset
 - Download the `coresdataset19.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
 
 Then, run the following command to download the images from the URLs onto your local machine.
@@ -28,9 +36,8 @@ Then, run the following command to download the images from the URLs onto your l
 
 ***
 
-## Zoomed Vs Normal
-
-### Generating the dataset
+## 2. Zoomed Vs Normal
+To generate the dataset,
 
 - Download the `zvsn_data.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of manually classified Zoomed & Normal images.
 
@@ -39,11 +46,11 @@ Then, run the following command to download the images from the URLs into their 
 `python create_dataset.py -m zvsn` 
 
 ***
-## Source code
+## Source code - Overview
  
 `create_dataset.py` has 2 functions:
 
-* `create_atlas_dataset` downloads the cleaned clothing images into the dataset folder. 
+* `create_atlas_dataset()` downloads the cleaned clothing images into the dataset folder. 
 
 In the data_collection folder, there are 13 crawlers that were written to crawl images and data associated with it from specific e-commerce clothing websites. When building the dataset, after downloading the images we had to [clean](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal) the dataset. Instead, we have compiled the URLs of the cleaned images we crawled into the `coresdataset19.json` file. 
 
@@ -76,7 +83,7 @@ Example:
 
 Steps to create **_Atlas_** dataset can be found [here](#atlas-dataset)
 
-* `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample json file called `zvsn_data.json` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
+* `create_zvsn_dataset()` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample json file called `zvsn_data.json` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
 Structure of the `zvsn_data.json` file:
 
