@@ -1,12 +1,12 @@
 # Datasets
 
 ## Table of Contents
-- [Atlas](#atlas)
- - [Taxonomy Generation](#taxonomy-generation)
- - [About the atlas Dataset](#about-the-atlas-dataset)
- - [Generating the Datatset](#generating-the-dataset)
-- [Zoomed Vs Normal](#zoomed-vs-normal)
-- [Source code- Overview](#source-code-overview)
+- [Atlas](#1-atlas)
+ - [Taxonomy Generation](#11-taxonomy-generation)
+ - [About the Dataset](#12-about-the-dataset)
+ - [Generating the Datatset](#13-generating-the-dataset)
+- [Zoomed Vs Normal](#2-zoomed-vs-normal)
+- [Source code- Overview](#3-source-code---overview)
   
 ## 1. Atlas
 
@@ -15,7 +15,7 @@
 While we were scraping images from different e-commerce websites, we noticed that each website had its own taxonomy with varying levels of category path depth. So, to standardize the taxonomy of our image dataset, we built our own taxonomy structure. The category paths are crucial in predicting the taxonomy of a given image. As you can see in the image below, the taxonomy tree of our **Atlas** dataset along with the count of clean images under each category is shown below. The taxonomy tree we have derived goes upto a maximum depth of 3 levels. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_taxonomy_tree.jpg "Taxonomy")
 
-### 1.2 About the Atlas Dataset
+### 1.2 About the Dataset
 This dataset contains **183,996** clothing images from 52 categories for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_category_samples.jpg "Sample dataset")
 These images and their corresponding product information were crawled from 13 E-commerce websites. 
@@ -46,7 +46,7 @@ Then, run the following command to download the images from the URLs into their 
 `python create_dataset.py -m zvsn` 
 
 ***
-## Source code - Overview
+## 3. Source code - Overview
  
 `create_dataset.py` has 2 functions:
 
