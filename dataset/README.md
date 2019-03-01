@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-- To download the apparel image dataset we used in our model, run the following command
+- To download the apparel image dataset, **_ATLAS_** we used in our model, run the following command
 
 `python create_dataset.py -m atlas` 
 
