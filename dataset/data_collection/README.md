@@ -1,9 +1,9 @@
 # Data Collection
-This folder contains the crawlers that can be used to collect product data and images from 13 e-commerce websites. 
+This folder contains the crawlers of 13 e-commerce websites that is used to collect product data and images from . 
 
 ## About the Crawlers
 
-For the purpose of web scraping, we have made use of 2 web scraping tools: Scrapy and Selenium.
+For the purpose of web scraping, we have used: Scrapy and Selenium.
 
 Most of our crawlers use Scrapy except in the case of one crawler where we used Selenium to scrape data from dynamic web pages.
 
