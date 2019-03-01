@@ -24,7 +24,7 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 | voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
 | zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
-**Note:** For our data collection, we used the above crawlers. However, since the strucure of web pages are dynamic and continually changing, this code may no longer be relevant. You may be requuired to alter parts of the code involving the HMTL and css tags to get the code running.
+**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the HMTL tags.
 
 
 ## Quick Start
@@ -37,9 +37,9 @@ You will need a csv file-`dataset.csv` of the following structure:
 
 About the csv:
 
-    |-Taxonomy : Contains taxonomy structure for a product
+    Taxonomy : Contains taxonomy structure for a product
 
-    |-Source url name (example: Utsav, Craftsvilla etc.): For the corresponding taxonomy as row, 
+    Source url name (example: Utsav, Craftsvilla etc.): For the corresponding taxonomy as row, 
     it contains the source urls of the main product page from which images have to be scraped
 
 Taxonomy: Category path to the product separated by "->"
