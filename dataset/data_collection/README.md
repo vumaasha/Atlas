@@ -1,5 +1,11 @@
+
+
+# Data Collection
+This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
+
+**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
+
 ## Table of Contents
-- [Data Collection](#data-collection)
 - [About the Crawlers](#about-the-crawlers)
 - [Collecting data using our crawlers](#collecting-data-using-our-crawlers)
     - [Pre-requisite packages to be installed ](#pre-requisite-packages-to-be-installed)
@@ -8,12 +14,6 @@
     - [To run the crawlers](#to-run-the-crawlers)
 - [FAQs](#faqs)
 
-
-
-# Data Collection
-This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
-
-**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
 
 ## About the Crawlers
 
