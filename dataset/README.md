@@ -32,7 +32,7 @@ To know more about our data collection procedure, visit [this link](https://gith
 While building our dataset, we developed our own taxonomy that standardizes the taxonomy of the images scraped from different e-commerce websites. The category path is crucial in predicting the taxonomy of a given image. As you can see in the image below, the taxonomy tree of our **Atlas** dataset along with the count of clean images under each category is shown below. The taxonomy tree we have derived goes upto a maximum depth of 3 levels. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_taxonomy_tree.jpg "Taxonomy")
 
-## Source ccode for Data Generation
+## Source code for Data Generation
  
 `create_dataset.py` has 2 functions:
 
