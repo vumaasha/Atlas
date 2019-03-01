@@ -1,22 +1,14 @@
-# Dataset Generation
+# Dataset
 
-## Atlas Dataset
-- `coresdataset19.json`contains the URLs of clothing images used to build the **_Atlas_** dataset which is available in the [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing). 
+## Atlas
 
-Then, run the following command to download the images into your local machine.
+### Taxonomy Generation
 
-`python create_dataset.py -m atlas` 
+While we were scraping images from different e-commerce websites, we noticed that each website had its own taxonomy with varying levels of category path depth. So, to standardize the taxonomy of our image dataset, we built our own taxonomy structure. The category paths are crucial in predicting the taxonomy of a given image. As you can see in the image below, the taxonomy tree of our **Atlas** dataset along with the count of clean images under each category is shown below. The taxonomy tree we have derived goes upto a maximum depth of 3 levels. 
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_taxonomy_tree.jpg "Taxonomy")
 
-## Zoomed vs Normal Dataset
-- `zvsn_data.json` contains the URLs of manually classified Zoomed & Normal images which is available in the [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing).
-
-Then, run the following command to download the images into their respective 'zoomed' and 'normal' folders in your local machine.
-
-`python create_dataset.py -m zvsn` 
-
-*** 
-## About the Dataset
-This dataset contains 183,996 clothing images from 52 categories for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
+### About the Atlas Dataset
+This dataset contains **183,996** clothing images from 52 categories for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_category_samples.jpg "Sample dataset")
 These images and their corresponding product information were crawled from 13 E-commerce websites. 
 
@@ -27,12 +19,27 @@ These images and their corresponding product information were crawled from 13 E-
 
 To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection).
 
-## About the Taxonomy
+### Generating the dataset
+- Download the `coresdataset19.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
 
-While we were scraping images from different e-commerce websites, we noticed that each website had its own taxonomy with varying levels of category path depth. So, to standardize the taxonomy of our image dataset, we built our own taxonomy structure. The category paths are crucial in predicting the taxonomy of a given image. As you can see in the image below, the taxonomy tree of our **Atlas** dataset along with the count of clean images under each category is shown below. The taxonomy tree we have derived goes upto a maximum depth of 3 levels. 
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_taxonomy_tree.jpg "Taxonomy")
+Then, run the following command to download the images from the URLs onto your local machine.
 
-## Source code for Dataset Generation
+`python create_dataset.py -m atlas` 
+
+***
+
+## Zoomed Vs Normal
+
+### Generating the dataset
+
+- Download the `zvsn_data.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of manually classified Zoomed & Normal images.
+
+Then, run the following command to download the images from the URLs into their respective 'zoomed' and 'normal' folders on your local machine.
+
+`python create_dataset.py -m zvsn` 
+
+***
+## Source code
  
 `create_dataset.py` has 2 functions:
 
