@@ -24,7 +24,7 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 | voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
 | zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
-**Note: For our data collection, we used the above crawlers. However, since the strucure of web pages are dynamic and continually changing, this code may no longer be relevant. You may be requuired to alter parts of the code involving the HMTL and css tags to get the code running.**
+**Note:** For our data collection, we used the above crawlers. However, since the strucure of web pages are dynamic and continually changing, this code may no longer be relevant. You may be requuired to alter parts of the code involving the HMTL and css tags to get the code running.
 
 
 ## Quick Start
@@ -74,9 +74,9 @@ Example:
 
 ***
 
-## Different ways to use the crawlers
+## Other ways to use the crawlers
 
-There are 2 ways you can use these,
+If you would like to use these images or crawlers for other applications. There are 2 ways you can use these,
 
 1. Expand categories on existing source url list
 
