@@ -1,18 +1,17 @@
 # Dataset Generation
 
-## Quick Start
-
+## ATLAS Dataset
 - To download the apparel image dataset, **_ATLAS_** we used in our model, run the following command
 
 `python create_dataset.py -m atlas` 
 
-Json file used `coresdataset.json`
 
+## Zoomed vs Normal Dataset
 - To download the dataset of images into folders 'zoomed' and 'normal' respectingly
 
 `python create_dataset.py -m zvsn` 
 
-Json file used `zvsn_data.json`
+
 
 *** 
 
