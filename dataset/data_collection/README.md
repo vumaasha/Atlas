@@ -29,7 +29,7 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 
 ## Quick Start
 
-### Before you run our crawlers
+### Inputs to the crawlers
 
 You will need a csv file-`dataset.csv` of the following structure:
 
