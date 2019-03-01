@@ -25,34 +25,34 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 | zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
 
-## Requirements
+## Quick Start
 
-### dataset.csv
+### Before you run our crawlers
 
-A csv file that contains the Taxonomy of the product and the source url of the website to be crawled. 
+You will need a csv file-`dataset.csv` of the following structure:
+
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_structure.jpg "sample of the csv file")
+
+About the csv:
+
+    |-Taxonomy : Contains taxonomy structure for a product
+
+    |-Source url name (example: Utsav, Craftsvilla etc.): For the corresponding taxonomy as row, 
+    it contains the source urls of the main product page from which images have to be scraped
 
 Taxonomy: Category path to the product separated by "->"
 
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_dataset_prep.jpg "sample of the csv file")
+The csv file contains the Taxonomy of the product and the source url of the website to be crawled. 
 
-Structure of the csv file:
+#### Pre-requisite packages to be installed 
 
-    |-Taxonomy : contains taxonomy structure for a product
+Install the required packages to setup the environment for crawler
 
-    |-Source url name (example: Utsav, Craftsvilla etc.): for the corresponding taxonomy as row, 
-    it contains the source urls of the main product page from which images have to be scraped
+`pip install -r requirements.txt`
 
-### Installations for crawlers
+### To run the crawlers
 
-
-
-### Crawler python files
-
-There are 3 ways you can use these,
-
-1. Use the existing categories on same source urls
-
-To run the any of the scrapy crawlers,
+Scrapy:
 
 `scrapy crawler_name.py` 
 
@@ -62,7 +62,7 @@ Example:
 
 `scrapy bollywood_kart.py`
 
-To run the selenium crawler,
+Selenium:
 
 `python crawler_name.py`
 
@@ -70,8 +70,13 @@ Example:
 
 `python myntra.py`
 
+***
 
-2. Expand categories on existing source url list
+## Different ways to use the crawlers
+
+There are 2 ways you can use these,
+
+1. Expand categories on existing source url list
 
 **Step 1:**
 
@@ -79,8 +84,8 @@ To add additional categories onto the existing source url list, add the taxonomy
 
 **Step 2:**
 
-Run the crawler as mentioned above.
+Run the crawler as mentioned [above](#to-run-the-crawlers).
 
-3. Build a custom dataset
+2. Build a custom dataset
 
-If you are building your own custom dataset, ensure that the resulting json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). 
+If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). 
