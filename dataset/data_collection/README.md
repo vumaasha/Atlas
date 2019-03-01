@@ -31,7 +31,7 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 
 You will need a csv file-`dataset.csv` of the following structure:
 
-![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_structure.jpg "sample of the csv file")
+![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_strucure.jpg "sample of the csv file")
 
 About the csv:
 
