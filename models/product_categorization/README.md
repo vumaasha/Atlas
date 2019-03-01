@@ -13,12 +13,13 @@ This is the source code of the model explained in our paper "Constrained Beam Se
   - [Attention](#attention)
   - [Constrained Beam Search](#constrained-beam-search)
 - [Sample Predictions](#sample-predictions)
+- [Inferences](#inferences)
+- [Acknowledgements](#acknowledgements)
 
 ## Quickstart
 Follow the steps in this section to train the model and get predictions
 
 ### Step 1: Setting up
-
 1. Clone this repository to your local machine
 
 2. Create a virtual environment named `atlas` and install all the project's dependencies listed in `requirements.txt`
@@ -86,7 +87,6 @@ The records in the output CSV file looks like this:
 It also prints the classification report for train, validation and test splits in the console. 
 
 ### Step 5: Predict category path and Visualise Attention
-
 Run `caption_cbs.py` to predict the category and visualize the attention. 
 
 Command to run: 
@@ -100,18 +100,60 @@ python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='pat
 This script predicts the category path and displays an output image that shows which part of the image has been focussed by our model to predict the category level.
 ![](../../img/prediction_1.png)
 
-
+---
 ## Model Overview
+We approach the product categorization problem as a **_sequence prediction problem_** by leveraging the dependency between each level in the category path. We use attention based neural network Encoder-Decoder architecture to generate sequences. 
 
+- **Encoder** is a **_101 layered Residual Network(ResNet) trained on the ImageNet classification task_** which converts the input image to a fixed size vector. 
+- **Decoder** is a **_combination of Long Short-Term Memory(LSTM) along with attention network_** which combines the encoder output and attention weights to predict category paths as sequences. 
+- We also extend our model by introducing **_constrained beam search_** on top of it to restrict the model from generating category paths that are not predefined in our taxonomy. 
 
 ## Sequence Model - Encoder and Decoder
-
 ### Encoder
+In Encoder, we use `Convolutional Neural Network(CNN)` to produce fixed size vectors. The input images are represented by the 3 color channels of RGB values. As we use the encoder only to encode images and not for classifying them, we remove the last two layers (linear and pooling layers) from the `ResNet-101 model`. The final encoding produced by the encoder will have the dimensions: `batch size x 14 x 14 x 2048`.
 
 ### Decoder
+The decoder receives the encoded image from the encoder using which it initializes the hidden and cell state of the LSTM model through two linear layers. Two virtual category levels `<start>`  and `<end>` which denote the beginning and end of the sequence are added  to the category path. The decoder LSTM uses `teacher forcing` for training.
+
+The decoder uses a `<start>`  marker which is considered to be the `zeroth category level`. The `<start>`  marker along with the encoded image is used to generate the first-top level of the category path. Subsequently, all other levels are predicted using the sequence generated so far along with the attention weights.
+
+An `<end>` marker is used to mark the end of a category path. The decoder stops decoding the sequence further as soon it generates the `<end>` marker
+
+At each time step, the decoder computes the weights and attention weighted encoding from the attention network using its previous hidden state. A final `softmax` layer transforms the hidden state into scores is stored so that it can be used later in beam search for selecting `k` best levels.
+
+The encoder-decoder architecture of our model is shown below:
+![](../../img/atlas_encoder_decoder.jpg)
 
 ## Attention
+The attention network learns `which part of the image has to be focused` to predict the next level in the category path while performing the sequence classification task. The attention network generates weights by considering the relevance between the encoded image and the previous hidden state or previous output of the decoder
+
+It consists of linear layers which transform the encoded image and the previous decoder's output to the same size. These vectors are summed together and passed to another linear layer which calculates the values to be softmaxed and then to a ReLU layer. A final softmax layer calculates the weights `alphas` of the pixels which add up to 1.
+
+Architectiure of our attention network is shown below
+![](../../img/atlas_attention.jpg)
 
 ## Constrained Beam Search
+Constrained Beam Search(CBS) is an approximate search algorithm and an extension of the Beam Search. It enforces constraints over resulting output sequences that can be expressed in a finite-state machine. In our work, we use CBS to restrict the decoder to generate category paths within our taxonomy. A category path is deemed valid if it is present in our pre-defined taxonomy.
+
+We created word mappings from the taxonomy tree which has the next possible categories for every category path. At each step, CBS uses this word map to check whether the current category is present in the next possible categories list of the category path. If the category is not present then they do not form a valid category path hence this sequence will be not be considered while choosing top k category paths. We set the beam size 'k' to 5, therefore CBS selects top 5 valid category paths based on the additive scores of the sequences at every decode step
 
 ## Sample Predictions
+Two samples are shown below to understand how CBS helps in constructing valid category paths.
+![](../../img/atlas_cbs.jpg)
+### Case 1:
+The categories `Western Wear`, `Sleepwear&Loungewear` and `Ethnic Wear` are eliminated, as the next categories after <start> are Men and Women which can be seen in taxonomy tree [here](https://github.com/vumaasha/Atlas/tree/master/dataset#about-the-taxonomy). In the third step, though the category path `Men > Inner Wear > Bathrobes` has the highest additive score of `-1.1750`, it was restricted by CBS as `Bathrobes` does not come after `Men > Inner Wear`. Once all the sequences are terminated, the category path with the highest score is returned. In this case, all category paths are terminated at the fourth step and `Women > Western Wear > Dresses` which has the highest overall score of `-1.2748` is returned. 
+ 
+For the same image, unconstrained beam search predicted an invalid category path whereas CBS predicted a valid as well as correct category path
+
+### Case 2:
+Unconstrained beam search returned a category path with 4 levels - `Women > Western Wear >  Western Wear > Skirts` whereas the category path generated by CBS was `Men > Inner Wear > Underwear`. Despite eliminating the output sequences with increased levels, the category path from CBS was valid but wrong.
+
+## Inferences
+
+1. With our model, we achieved an `f-score` of **0.90** on our training split, **0.88** on validation and test splits on **_Atlas_** dataset
+2. We show that Constrained Beam Search(CBS) improved the accuracy of our model and outperformed unconstrained beam search in classification tasks
+3. Constrained Beam Search(CBS) guaranteed the prediction of valid category paths, however, it did not produce accurate predictions all the time
+
+## Acknowledgements
+
+1. The source code of our model was forked from this repository: https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Image-Captioning
