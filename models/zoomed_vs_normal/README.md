@@ -22,7 +22,7 @@ Few examples of (a) Zoomed and (b) Normal images from our **_Atlas_** dataset ar
 We prepared the training data by visual inspection. We segregated noisy and high-quality images into two different folders by looking at the thumbnails of the hundreds of product images in a go.
 
 We automated the process of filtering out the noisy images with the help of a simple 3 layer CNN based classification model. 
-The notebook [here](https://github.com/vumaasha/Atlas/blob/master/models/normal_vs_zoomed/Zoomed_vs_Normal.ipynb) explains the steps to be followed to build, train and predict using our model.
+The notebook [here](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb) explains the steps to be followed to build, train and predict using our model.
 
 - Our CNN model was trained on 6005 normal images and 1054 zoomed images and achieved an f-score of **0.98** on test set. 
 - We applied this model on our **_Atlas_** dataset to filter out the noisy images which has **183,996 images** after cleaning.

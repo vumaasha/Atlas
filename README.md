@@ -90,7 +90,7 @@ python dataset/create_dataset.py -m atlas
 ### Data Cleaning
 After collecting data, we found that many product listing also included a zoomed in images that display intrinsic details such as the texture of the fabric, brand labels, button, and pocket styles. These zoomed in images would drastically affect the quality of the dataset. We automated the process of filtering out the noisy images with the help of a simple 3 layer CNN based classification model
 
-More details about the architecture of CNN Model and how we used it to clean our dataset can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/normal_vs_zoomed).
+More details about the architecture of CNN Model and how we used it to clean our dataset can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal).
 
 **Note:** Our Atlas dataset generated in the above section is already cleaned. No need to apply this Zoomed Vs Normal model on the dataset.
 
