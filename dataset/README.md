@@ -1,7 +1,7 @@
 # Dataset Generation
 
 ## ATLAS Dataset
-- To download the clothing image dataset, **_ATLAS_** we used in our model, run the following command
+- To download the clothing image dataset - **_ATLAS_**, that we used in our model, run the following command
 
 `python create_dataset.py -m atlas` 
 
@@ -10,8 +10,6 @@
 - To download the dataset of images into folders 'zoomed' and 'normal' respectingly
 
 `python create_dataset.py -m zvsn` 
-
-
 
 *** 
 
