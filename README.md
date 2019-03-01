@@ -109,10 +109,6 @@ Yes, you can re-train the model and perform the predictions on the new model by 
 * [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
 * [using your own custom dataset and then re-training the model](#can-i-build-my-own-custom-dataset-or-add-additional-categories-to-the-existing-dataset)
 
-#### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-Yes. There are two ways you can do this:
-* Expand categories by using our pre-written crawlers to collect additional images
-* Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
 
 ## Authors
 * [Venkatesh Umaashankar](https://github.com/vumaasha)
