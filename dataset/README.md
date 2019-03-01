@@ -8,7 +8,7 @@
 
 Json file used `coresdataset.json`
 
-- To download the dataset of images into folders 'zoomed' and 'normal' respectfully
+- To download the dataset of images into folders 'zoomed' and 'normal' respectingly
 
 `python create_dataset.py -m zvsn` 
 
