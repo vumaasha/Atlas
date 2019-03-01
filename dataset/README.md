@@ -16,7 +16,7 @@
 *** 
 
 ## About the Dataset
-This dataset contains 52 categories of images of Apparel for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
+This dataset contains 183,996 clothing images from 52 categories for Men and Women. The images in our dataset include different views/angles of the product. A sample of the images from our dataset is given below. 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_category_samples.jpg "Sample dataset")
 These images and their corresponding product information were crawled from 13 E-commerce websites. 
 
