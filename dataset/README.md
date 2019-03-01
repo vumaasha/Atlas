@@ -2,9 +2,9 @@
 
 ## Table of Contents
 - [Atlas](#1-atlas)
- - [Taxonomy Generation](#11-taxonomy-generation)
- - [About the Dataset](#12-about-the-dataset)
- - [Generating the Datatset](#13-generating-the-dataset)
+    - [Taxonomy Generation](#11-taxonomy-generation)
+    - [About the Dataset](#12-about-the-dataset)
+    - [Generating the Datatset](#13-generating-the-dataset)
 - [Zoomed Vs Normal](#2-zoomed-vs-normal)
 - [Source code- Overview](#3-source-code---overview)
   
