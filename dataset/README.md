@@ -1,7 +1,7 @@
 # Dataset Generation
 
 ## ATLAS Dataset
-- To download the apparel image dataset, **_ATLAS_** we used in our model, run the following command
+- To download the clothing image dataset, **_ATLAS_** we used in our model, run the following command
 
 `python create_dataset.py -m atlas` 
 
@@ -67,6 +67,8 @@ Example:
 'image_url': 'https://images.voonik.com/01993582/euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpg?1522053196', 'split': 'train'}
 ```
 
+To generate the _*ATLAS*_ dataset, run [this script](#atlas-dataset).
+
 * `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample csv file called `zvsn_data.csv` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
 Structure of the `coresdataset19.json` file:
@@ -91,6 +93,5 @@ Example:
 'label': 'zoomed', 
 'title': "Tribewear Men's Geometric Print Casual White Shirt"}
 ```
-
-Steps to run these can be found [here](#quick-start)
+To generate the _*zoomed_vs_normal*_ dataset, run [this script](#zoomed-vs-normal-dataset).
 
