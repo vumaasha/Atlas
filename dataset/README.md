@@ -60,7 +60,7 @@ Structure of the `coresdataset19.json` file:
 
 
 
-* `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample csv file called `zvsn_data.json` that contains a collection of zoomed and normal images for the category *Men > Western Wear > Shirts*
+* `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample csv file called `zvsn_data.csv` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
 Structure of the `coresdataset19.json` file:
 
