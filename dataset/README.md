@@ -1,5 +1,14 @@
 # Datasets
 
+We have provided 2 datasets:
+
+1. Atlas
+
+This dataset contains the 
+
+
+2. Zoomed vs Normal
+
 ## Table of Contents
 - [Atlas](#1-atlas)
     - [Taxonomy Generation](#11-taxonomy-generation)
