@@ -100,7 +100,7 @@ Example:
 
 Yes, you can build your own custom dataset.If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). If the dataset includes zoomed images, you can clean your dataset as mentioned [here](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb).
 
-How can I add additional categories to the existing dataset?
+#### How can I add additional categories to the existing dataset?
 
 To add additional categories onto the existing source url list, add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name as shown [here](#inputs-to-the-crawlers).
 Run the crawler as [mentioned](#to-run-the-crawlers).
