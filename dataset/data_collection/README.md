@@ -1,50 +1,42 @@
 # Data Collection
-This folder contains the crawlers of 13 e-commerce websites that is used to collect product data and images from . 
+This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
 
 ## About the Crawlers
 
-For the purpose of web scraping, we have used: Scrapy and Selenium.
+To perform web scraping, we used: Scrapy and Selenium.
 
 Most of our crawlers use Scrapy except in the case of one crawler where we used Selenium to scrape data from dynamic web pages.
 
+|Source Website| Crawler Name           | Scrapy | Selenium |
+|-------------|--------------------------|--------|----------|
+|[Amazon](https://www.amazon.in/)| Amazon.py                | :heavy_check_mark:  |   :x:       |
+|[Flipkart](https://www.flipkart.com/)| Flipkart.py              | :heavy_check_mark:  |    :x:      |
+|[BollywoodKart](https://www.bollywoodkart.com/)| bollywood_kart.py        | :heavy_check_mark:  |   :x:       |
+|[Craftsvilla](https://www.craftsvilla.com)| craftsvilla_crawler.py   | :heavy_check_mark:  |      :x:    |
+|[India Emporium](https://indiaemporium.com)| indian_emporium.py       | :heavy_check_mark:  |       :x:   |
+|[Indian Clothstore](https://www.indianclothstore.com/)| indian_cloth_store.py    | :heavy_check_mark:  |      :x:    |
+|[Indiarush](https://indiarush.com/)| indiarush.py             | :heavy_check_mark:  |        :x:  |
+|[Mirraw](https://www.mirraw.com/)| mirraw_crawler.py        | :heavy_check_mark:  |        :x:  |
+|[Myntra](https://www.myntra.com/)| myntra.py                | :x:       | :heavy_check_mark:    |
+|[Snapdeal](https://www.snapdeal.com/)| snapdeal_crawler.py      | :heavy_check_mark:  |    :x:      |
+|[Utsav Fashion](https://www.utsavfashion.in/)| utsav_fashion_crawler.py |   :heavy_check_mark:  |     :x:     |
+|[Voonik](https://www.voonik.com/)| voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
+|[Zipker](https://www.zipker.com/)| zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
-| Source Website           | Scrapy | Selenium |
-|--------------------------|--------|----------|
-| Amazon.py                | :heavy_check_mark:  |   :x:       |
-| Flipkart.py              | :heavy_check_mark:  |    :x:      |
-| bollywood_kart.py        | :heavy_check_mark:  |   :x:       |
-| craftsvilla_crawler.py   | :heavy_check_mark:  |      :x:    |
-| indian_emporium.py       | :heavy_check_mark:  |       :x:   |
-| indian_cloth_store.py    | :heavy_check_mark:  |      :x:    |
-| indiarush.py             | :heavy_check_mark:  |        :x:  |
-| mirraw_crawler.py        | :heavy_check_mark:  |        :x:  |
-| myntra.py                | :x:       | :heavy_check_mark:    |
-| snapdeal_crawler.py      | :heavy_check_mark:  |    :x:      |
-| utsav_fashion_crawler.py |   :heavy_check_mark:  |     :x:     |
-| voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
-| zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
-
-**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the HMTL tags.
+**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
 
 
 ## Collecting data using our crawlers
 
 ### Inputs to the crawlers
 
-You will need a csv file-`dataset.csv` of the following structure:
+The csv file is needed for the crawlers to scrape the product details from the specified URL. The csv file `crawler_dataset.csv` has the following structure:
 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_strucure.jpg "sample of the csv file")
 
-About the csv:
-
-    Taxonomy : Contains taxonomy structure for a product
-
-    Source url name (example: Utsav, Craftsvilla etc.): For the corresponding taxonomy as row, 
-    it contains the source urls of the main product page from which images have to be scraped
-
-Taxonomy: Category path to the product separated by "->"
-
-The csv file contains the Taxonomy of the product and the source url of the website to be crawled. 
+The first column is named _Taxonomy_ and contains the category path for a product which is separated by "->". 
+Example: Men-> Western Wear-> Jeans
+The remaining columns are named after the crawler and the rows are filled with the product page URL for the given source.
 
 #### Pre-requisite packages to be installed 
 
@@ -74,29 +66,54 @@ Example:
 
 ***
 
-## Other ways to use the crawlers
+## Working of the crawlers
 
-If you would like to use these images or crawlers for other applications. There are 2 ways you can use these,
-
-1. Expand categories on existing source url list
+Each of the crawlers follow these steps while scraping images from a URL
 
 **Step 1:**
-
-To add additional categories onto the existing source url list, add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name.
+Parse the csv file to obtain the source URL of website to be scraped
 
 **Step 2:**
+At each iteration, scraper visits each product page URL starting from the source URL and scrapes the following information and stores it into a dictionary
 
-Run the crawler as mentioned [above](#to-run-the-crawlers).
+```
+ 'product_title' : Title of the image
+ 'product_price' : Price of product in the image
+ 'product_image_url' : Image download link
+ 'product_details' : Additional details about the product
+ `taxonomy` : Category path of product as specified in the source csv file
+```
 
-2. Build a custom dataset
+**Step 3:**
+`file_path : Contains folder path to store the file` which in this case is in the `category_path/images` directory
+The images are downloaded from the `product_image_url` link into the image file path. 
 
-If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). 
+**Step 4:**
+The dictionary containing information about the product is written into a Json file.
+
+**Step 5**
+The scraper checks if there is Next Page in the source URL web page, if so, repeats step 2 through 5, else ends the process.
 
 
 ## FAQ
 
 #### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-Yes. There are two ways you can do this:
+
 * Expand categories by using our pre-written crawlers to collect additional images
-* Use your own custom dataset by writing your own crawlers but the images would have to be modified as per the format required to run our model. After collecting the images for the dataset, re-train the model. 
+
+To add additional categories onto the existing source url list, [add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name](#inputs-to-the-crawlers).
+Run the crawler as [mentioned](#to-run-the-crawlers).
+
+* Use your own custom dataset
+
+If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). If the dataset includes zoomed images, you can clean your dataset using [this](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb).
+After generating the dataset, [re-train the model](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization). 
+
+
+
+
+
+
+
+
 
