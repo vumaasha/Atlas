@@ -1,9 +1,11 @@
 # Data Collection
 This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
 
+**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
+
 ## About the Crawlers
 
-To perform web scraping, we used: Scrapy and Selenium.
+To perform web scraping, we used: [Scrapy](https://scrapy.org/) and [Selenium](https://www.seleniumhq.org/).
 
 Most of our crawlers use Scrapy except in the case of one crawler where we used Selenium to scrape data from dynamic web pages.
 
@@ -23,10 +25,14 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 |[Voonik](https://www.voonik.com/)| voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
 |[Zipker](https://www.zipker.com/)| zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
-**Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
-
 
 ## Collecting data using our crawlers
+
+### Pre-requisite packages to be installed 
+
+Install the required packages to setup the environment for crawler
+
+`pip install -r requirements.txt`
 
 ### Inputs to the crawlers
 
@@ -34,44 +40,19 @@ The csv file is needed for the crawlers to scrape the product details from the s
 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_strucure.jpg "sample of the csv file")
 
+For example in from teh image above, 
+
 The first column is named _Taxonomy_ and contains the category path for a product which is separated by "->". 
 Example: Men-> Western Wear-> Jeans
+
 The remaining columns are named after the crawler and the rows are filled with the product page URL for the given source.
 
-#### Pre-requisite packages to be installed 
-
-Install the required packages to setup the environment for crawler
-
-`pip install -r requirements.txt`
-
-### To run the crawlers
-
-Scrapy:
-
-`scrapy crawler_name.py` 
-
-Replace 'crawler_name' with name of the python file
-
-Example:
-
-`scrapy bollywood_kart.py`
-
-Selenium:
-
-`python crawler_name.py`
-
-Example:
-
-`python myntra.py`
-
-***
-
-## Working of the crawlers
+### Working of the crawlers
 
 Each of the crawlers follow these steps while scraping images from a URL
 
 **Step 1:**
-Parse the csv file to obtain the source URL of website to be scraped
+Parse the input csv file `crawler_datasett.csv` to obtain the source URL of website to be scraped
 
 **Step 2:**
 At each iteration, scraper visits each product page URL starting from the source URL and scrapes the following information and stores it into a dictionary
@@ -95,19 +76,35 @@ The dictionary containing information about the product is written into a Json f
 The scraper checks if there is Next Page in the source URL web page, if so, repeats step 2 through 5, else ends the process.
 
 
-## FAQ
+### To run the crawlers
 
-#### [Can I build my own custom dataset or add additional categories to the existing dataset?](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
+- To run Scrapy crawlers : `scrapy crawler_name.py` 
 
-* Expand categories by using our pre-written crawlers to collect additional images
+Replace 'crawler_name' with name of the python file
 
-To add additional categories onto the existing source url list, [add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name](#inputs-to-the-crawlers).
+Example:
+
+`scrapy bollywood_kart.py`
+
+- To run Selenium crawlers : `python crawler_name.py`
+
+Example:
+
+`python myntra.py`
+
+***
+
+## FAQS
+
+#### Can I build my own custom dataset? 
+
+Yes, you can build your own custom dataset.If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). If the dataset includes zoomed images, you can clean your dataset as mentioned [here](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb).
+
+How can I add additional categories to the existing dataset?
+
+To add additional categories onto the existing source url list, add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name as shown [here](#inputs-to-the-crawlers).
 Run the crawler as [mentioned](#to-run-the-crawlers).
 
-* Use your own custom dataset
-
-If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). If the dataset includes zoomed images, you can clean your dataset using [this](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb).
-After generating the dataset, [re-train the model](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization). 
 
 
 
