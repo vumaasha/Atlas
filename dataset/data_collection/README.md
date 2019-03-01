@@ -27,7 +27,7 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 **Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the HMTL tags.
 
 
-## Quick Start
+## Collecting data using our crawlers
 
 ### Inputs to the crawlers
 
