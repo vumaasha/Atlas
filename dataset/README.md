@@ -67,7 +67,7 @@ Example:
 'image_url': 'https://images.voonik.com/01993582/euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpg?1522053196', 'split': 'train'}
 ```
 
-Steps on how to run this code can be found [here](#atlas-dataset)
+Steps to create *_Atlas_* dataset can be found [here](#atlas-dataset)
 
 * `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample json file called `zvsn_data.json` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
@@ -94,4 +94,4 @@ Example:
 'title': "Tribewear Men's Geometric Print Casual White Shirt"}
 ```
 
-Steps on how to run this code can be found [here](#zoomed-vs-normal-dataset)
+Steps to create zoomed_vs_normal dataset can be found [here](#zoomed-vs-normal-dataset)
