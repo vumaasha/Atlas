@@ -24,6 +24,8 @@ Most of our crawlers use Scrapy except in the case of one crawler where we used 
 | voonik_crawler.py        |   :heavy_check_mark:  |     :x:     |
 | zipker_crawler.py        | :heavy_check_mark:  |      :x:    |
 
+**Note: For our data collection, we used the above crawlers. However, since the strucure of web pages are dynamic and continually changing, this code may no longer be relevant. You may be requuired to alter parts of the code involving the HMTL and css tags to get the code running.**
+
 
 ## Quick Start
 
