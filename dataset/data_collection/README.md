@@ -1,3 +1,15 @@
+## Table of Contents
+- [Data Collection](#data-collection)
+- [About the Crawlers](#about-the-crawlers)
+- [Collecting data using our crawlers](#collecting-data-using-our-crawlers)
+    - [Pre-requisite packages to be installed ](#pre-requisite-packages-to-be-installed)
+    - [Inputs to the crawlers](#inputs-to-the-crawlers)
+    - [Working of the crawlers](#working-of-the-crawlers)
+    - [To run the crawlers](#to-run-the-crawlers)
+- [FAQs](#faqs)
+
+
+
 # Data Collection
 This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
 
@@ -76,7 +88,7 @@ The dictionary containing information about the product is written into a Json f
 The scraper checks if there is Next Page in the source URL web page, if so, repeats step 2 through 5, else ends the process.
 
 
-### To run the crawlers
+### Running the crawlers
 
 - To run Scrapy crawlers : `scrapy crawler_name.py` 
 
@@ -94,13 +106,13 @@ Example:
 
 ***
 
-## FAQS
+## FAQs
 
-#### Can I build my own custom dataset? 
+#### 1. Can I build my own custom dataset? 
 
 Yes, you can build your own custom dataset.If you are building your own custom dataset, ensure that a json file is created with the necessary information in the format mentioned [here](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md). If the dataset includes zoomed images, you can clean your dataset as mentioned [here](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb).
 
-#### How can I add additional categories to the existing dataset?
+#### 2. How can I add additional categories to the existing dataset?
 
 To add additional categories onto the existing source url list, add the taxonomy of the new category in the specified column format and the source url of the product page in the corresponding website column name as shown [here](#inputs-to-the-crawlers).
 Run the crawler as [mentioned](#to-run-the-crawlers).
