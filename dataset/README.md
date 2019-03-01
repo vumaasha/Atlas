@@ -58,7 +58,14 @@ Structure of the `coresdataset19.json` file:
 
          |--split : train/test split
 
+Example:
 
+```
+{'filename': 'euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpeg', 
+'title': "euro fashion\n men's cotton brief (pack of  3 )", 
+'sentences': [{'tokens': ['Men', 'Inner Wear', 'Underwear']}], 
+'image_url': 'https://images.voonik.com/01993582/euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpg?1522053196', 'split': 'train'}
+```
 
 * `create_zvsn_dataset` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample csv file called `zvsn_data.csv` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
@@ -76,6 +83,14 @@ Structure of the `coresdataset19.json` file:
          
          |--label : zoomed/normal
 
+Example:
+
+```
+{'filename': 'af9882e41bb9eb964a32815bc1f5085778a4d7e2.jpg', 
+'image_url': 'http://rukmini1.flixcart.com/image/300/300/jepzrm80/shirt/2/t/v/xl-spidershirt-2-tribewear-original-imaf3bvnte6fvv5y.jpeg?q=100', 
+'label': 'zoomed', 
+'title': "Tribewear Men's Geometric Print Casual White Shirt"}
+```
 
 Steps to run these can be found [here](#quick-start)
 
