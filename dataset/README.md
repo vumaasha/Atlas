@@ -2,10 +2,10 @@
 
 We have curated 2 datasets:
 
-1. Atlas : This dataset contains 183,996 clothing images from 52 categories for Men and Women. These images along with their category paths were used to train our model for taxonomy predictiion.
+1. **Atlas** : This dataset contains 183,996 clothing images from 52 categories for Men and Women. These images along with their category paths were used to train our model for taxonomy predictiion.
 
 
-2. Zoomed vs Normal: This dataset contains images that have been manually segregated as Zoomed and Normal. We used this dataset while cleaning our _**Atlas**_ dataset to remove noisy Zoomed images that were a poor representation of the product. The Zoomed vs Normal dataset was used in [this](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb) model to predict whether a given image is Zoomed or Normal.
+2. **Zoomed vs Normal**: This dataset contains images that have been manually segregated as Zoomed and Normal. We used this dataset while cleaning our _**Atlas**_ dataset to remove noisy Zoomed images that were a poor representation of the product. The Zoomed vs Normal dataset was used in [this](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb) model to predict whether a given image is Zoomed or Normal.
 
 ## Table of Contents
 - [Atlas](#1-atlas)
@@ -35,7 +35,7 @@ These images and their corresponding product information were crawled from 13 E-
 To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection).
 
 ### 1.3 Generating the Dataset
-- Download the `coresdataset19.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
+Download the `coresdataset19.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
 
 Then, run the following command to download the images from the URLs onto your local machine.
 
@@ -46,7 +46,7 @@ Then, run the following command to download the images from the URLs onto your l
 ## 2. Zoomed Vs Normal
 To generate the dataset,
 
-- Download the `zvsn_data.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of manually classified Zoomed & Normal images.
+Download the `zvsn_data.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of manually classified Zoomed & Normal images.
 
 Then, run the following command to download the images from the URLs into their respective 'zoomed' and 'normal' folders on your local machine.
 
@@ -57,7 +57,7 @@ Then, run the following command to download the images from the URLs into their 
  
 `create_dataset.py` has 2 functions:
 
-* `create_atlas_dataset()` downloads the cleaned clothing images into the dataset folder. 
+`create_atlas_dataset()` downloads the cleaned clothing images into the dataset folder. 
 
 In the data_collection folder, there are 13 crawlers that were written to crawl images and data associated with it from specific e-commerce clothing websites. When building the dataset, after downloading the images we had to [clean](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal) the dataset. Instead, we have compiled the URLs of the cleaned images we crawled into the `coresdataset19.json` file. 
 
@@ -90,7 +90,7 @@ Example:
 
 Steps to create **_Atlas_** dataset can be found [here](#atlas-dataset)
 
-* `create_zvsn_dataset()` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample json file called `zvsn_data.json` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
+`create_zvsn_dataset()` downloads the images into 2 folders called zoomed and normal that consists of zoomed and normal images. We have included a sample json file called `zvsn_data.json` that contains a collection of zoomed and normal image URLs for the category *Men > Western Wear > Shirts*
 
 Structure of the `zvsn_data.json` file:
 
