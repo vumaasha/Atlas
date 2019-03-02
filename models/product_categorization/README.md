@@ -80,8 +80,8 @@ The records in the output CSV file looks like this:
 
 |actual_category | file_name | predicted_category | split_value |
 | --- | --- | --- | --- |
-| "['Women', 'Western Wear', 'Tops&Tees']" | coresdataset19/Women_Western Wear_Tops&Tees/images/4a69fc38a31f5e168558f02967b70ff14dba580a.jpg | "['Women', 'Western Wear', 'Tops&Tees']" | train |
-| "['Men', 'Western Wear', 'Trousers']" | coresdataset19/Men_Western Wear_Trousers/images/739299c941d67567d8bafbc68070a79f204ed599.jpg | "['Men', 'Western Wear', 'Trousers']" | train |
+| "['Women', 'Western Wear', 'Tops&Tees']" | dataset/Women_Western Wear_Tops&Tees/images/4a69fc38a31f5e168558f02967b70ff14dba580a.jpg | "['Women', 'Western Wear', 'Tops&Tees']" | train |
+| "['Men', 'Western Wear', 'Trousers']" | dataset/Men_Western Wear_Trousers/images/739299c941d67567d8bafbc68070a79f204ed599.jpg | "['Men', 'Western Wear', 'Trousers']" | train |
 
 
 It also prints the classification report for train, validation and test splits in the console. 

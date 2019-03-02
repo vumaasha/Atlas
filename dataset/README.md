@@ -5,7 +5,7 @@ We have curated 2 datasets:
 1. **Atlas** : This dataset contains 183,996 clothing images from 52 categories for Men and Women. These images along with their category paths were used to train our model for product categorization model which can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization).
 
 
-2. **Zoomed vs Normal**: This dataset contains images that have been manually segregated as Zoomed and Normal. We used this dataset to train our model as shown [here](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb). This model was used to clean _**Atlas**_ dataset, to remove noisy Zoomed images that were a poor representation of the product.
+2. **Zoomed vs Normal**: This dataset contains images that have been manually segregated as Zoomed and Normal. It has **7494** normal images and **1330** zoomed images. We used this dataset to train our model as shown [here](https://github.com/vumaasha/Atlas/blob/master/models/zoomed_vs_normal/Zoomed_vs_Normal.ipynb). This model was used to clean _**Atlas**_ dataset, to remove noisy Zoomed images that were a poor representation of the product.
 
 ## Table of Contents
 - [Atlas](#1-atlas)

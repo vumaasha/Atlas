@@ -74,7 +74,7 @@ Check out this [section](https://github.com/vumaasha/Atlas/tree/master/dataset/d
 
 The dataset, **_Atlas_**, we used for training our model is a high-quality product taxonomy dataset focusing on clothing products. It contains **183,996 images** under 52 clothing categories.
 
-We provide a JSON file `coresdataset19.json` which has data and URL of the images for 183,996 products. A sample record from the JSON is shown below
+We provide a JSON file `atlas_dataset.json` which has data and URL of the images for 183,996 products. A sample record from the JSON is shown below
 ```
 {'filename': 'euro-fashion-men-s-cotton-brief-pack-of-3-c9f86351-product.jpeg', 
 'title': "euro fashion\n men's cotton brief (pack of  3 )", 
@@ -104,10 +104,6 @@ We also extend our model by introducing constrained beam search on top of it to 
 More details and procedures on model training can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization#product-categorization-model)
 
 ## FAQs
-#### Can I modify the model?
-Yes, you can re-train the model and perform the predictions on the new model by either
-* [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#data-collection)
-* [using your own custom dataset and then re-training the model](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#faqs)
 
 
 ## Authors
