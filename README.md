@@ -50,7 +50,7 @@ Our pre-trained model predicts the category path and displays an output image th
 
 Similarly you can predict for other images using this command, by changing the path in `--img` parameter to point to your image location.
 
-Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization)
+Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization#sample-predictions)
 
 
 ## Concepts Overview
@@ -66,11 +66,11 @@ We use attention based neural network Encoder-Decoder model to generate the sequ
 
 ## Implementation
 ### Taxonomy Generation
-We gathered taxonomy for the clothing top level category from popular Indian e-commerce fashion sites. We analyzed popular products, niche, and premium clothing products across these stores and developed our taxonomy with 52 category paths. The list of 52 category paths and additional details can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#about-taxonomy)
+We gathered taxonomy for the clothing top level category from popular Indian e-commerce fashion sites. We analyzed popular products, niche, and premium clothing products across these stores and developed our taxonomy with 52 category paths. The list of 52 category paths and additional details can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#11-taxonomy-generation)
 
 ### Data Collection
 For all categories in taxonomy tree, we collected product data and its images from popular Indian E-commerce stores. Web scraping tools like Scrapy and Selenium were used to extract the product title, breadcrumb, image and price of each product.
-Check out this [section](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection) to know more about our data collection strategy for **_Atlas_** dataset.
+Check out this [section](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#data-collection) to know more about our data collection strategy for **_Atlas_** dataset.
 
 The dataset, **_Atlas_**, we used for training our model is a high-quality product taxonomy dataset focusing on clothing products. It contains **183,996 images** under 52 clothing categories.
 
@@ -90,7 +90,7 @@ python dataset/create_dataset.py -m atlas
 ### Data Cleaning
 After collecting data, we found that many product listing also included a zoomed in images that display intrinsic details such as the texture of the fabric, brand labels, button, and pocket styles. These zoomed in images would drastically affect the quality of the dataset. We automated the process of filtering out the noisy images with the help of a simple 3 layer CNN based classification model
 
-More details about the architecture of CNN Model and how we used it to clean our dataset can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal).
+More details about the architecture of CNN Model and how we used it to clean our dataset can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal#data-cleaning).
 
 **Note:** Our Atlas dataset generated in the above section is already cleaned. No need to apply this Zoomed Vs Normal model on the dataset.
 
@@ -101,13 +101,13 @@ Encoder is a 101 layered Residual Network(ResNet) trained on the ImageNet classi
 
 We also extend our model by introducing constrained beam search on top of it to restrict the model from generating category paths that are not predefined in our taxonomy. 
 
-More details and procedures on model training can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization)
+More details and procedures on model training can be found [here](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization#product-categorization-model)
 
 ## FAQs
 #### Can I modify the model?
 Yes, you can re-train the model and perform the predictions on the new model by either
-* [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/blob/master/dataset/README.md)
-* [using your own custom dataset and then re-training the model](#can-i-build-my-own-custom-dataset-or-add-additional-categories-to-the-existing-dataset)
+* [downloading and using our existing dataset](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#data-collection)
+* [using your own custom dataset and then re-training the model](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#faqs)
 
 
 ## Authors
