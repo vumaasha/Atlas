@@ -115,4 +115,4 @@ Example:
 'title': "Tribewear Men's Geometric Print Casual White Shirt"}
 ```
 
-Steps to create zoomed_vs_normal dataset can be found [here](#zoomed-vs-normal-dataset)
+Steps to create zoomed_vs_normal dataset can be found [here](#2-zoomed-vs-normal)
