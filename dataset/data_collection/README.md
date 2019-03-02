@@ -1,7 +1,7 @@
 
 
 # Data Collection
-This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data. 
+This folder contains the crawlers of 13 e-commerce websites that we used to collect product images and their corresponding data for our _**Atlas**_ dataset. 
 
 **Note:** For our data collection, we used the above crawlers. However, since the structure of the HTML pages is continually changing, these crawlers may or may no work at the time of your use. You may be requuired to alter parts of the code involving the CSS selectors.
 
