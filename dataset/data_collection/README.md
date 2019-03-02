@@ -90,7 +90,7 @@ The scraper checks if there is Next Page in the source URL web page, if so, repe
 
 ### Running the crawlers
 
-- To run Scrapy crawlers : `scrapy crawler_name.py` 
+To run Scrapy crawlers : `scrapy crawler_name.py` 
 
 Replace 'crawler_name' with name of the python file
 
@@ -98,7 +98,7 @@ Example:
 
 `scrapy bollywood_kart.py`
 
-- To run Selenium crawlers : `python crawler_name.py`
+To run Selenium crawlers : `python crawler_name.py`
 
 Example:
 
