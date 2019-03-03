@@ -31,7 +31,7 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 * Clone this repository to your local machine
 
 * Create a virtual environment named `atlas` and install all the project's dependencies
-listed in `requirements.txt`
+listed in [`requirements.txt`](https://github.com/vumaasha/Atlas/blob/master/models/product_categorization/requirements.txt)
 
 
 ### Predicting using Product Categorization model
