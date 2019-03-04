@@ -251,12 +251,13 @@ if __name__ == '__main__':
     parser.add_argument('--img', '-i', help='path to image')
     parser.add_argument('--model', '-m', help='path to model')
     parser.add_argument('--word_map', '-wm', help='path to word map JSON')
+    parser.add_argument('--karpathy_json', '-kj', help='path to karpathy JSON split file')
     parser.add_argument('--beam_size', '-b', default=3, type=int, help='beam size for beam search')
     parser.add_argument('--dont_smooth', dest='smooth', action='store_false', help='do not smooth alpha overlay')
 
     args = parser.parse_args()
 
-    karpathy_json_path = '../coresdataset19/coresdataset19.json'
+    karpathy_json_path = args.karpathy_json
 
     # Load model
     checkpoint = torch.load(args.model, map_location=device)
