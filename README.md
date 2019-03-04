@@ -36,7 +36,7 @@ listed in [`requirements.txt`](https://github.com/vumaasha/Atlas/blob/master/mod
 
 ### Predicting using Product Categorization model
 Follow these steps to predict the category path for a product using pur pretrained product categoristion model: 
-1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing).
+1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/drive/folders/1ZKNR2CytY89Q4kDYSwyQlA_pgUdocjeQ).
 2. Switch to `models/product_categorization` directory
 3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 
