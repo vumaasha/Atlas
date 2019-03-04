@@ -44,7 +44,7 @@ Follow these steps to predict the category path for a product using pur pretrain
 python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='path/to/BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5
 ```
 
-![](./img/prediction_1.png)
+![](./img/prediction_kurta.png)
 
 Our pre-trained model predicts the category path and displays an output image that shows which part of the image has been focussed by our model to predict the category level.
 
