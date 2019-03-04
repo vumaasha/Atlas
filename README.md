@@ -31,12 +31,13 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 * Clone this repository to your local machine
 
 * Create a virtual environment named `atlas` and install all the project's dependencies
-listed in [`requirements.txt`](https://github.com/vumaasha/Atlas/blob/master/models/product_categorization/requirements.txt)
+listed in [`models/product_categorization/requirements.txt`](https://github.com/vumaasha/Atlas/blob/master/models/product_categorization/requirements.txt)
 
+`pip install -r models/product_categorization/requirements.txt`
 
 ### Predicting using Product Categorization model
 Follow these steps to predict the category path for a product using pur pretrained product categoristion model: 
-1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing).
+1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/drive/folders/1ZKNR2CytY89Q4kDYSwyQlA_pgUdocjeQ).
 2. Switch to `models/product_categorization` directory
 3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 
@@ -44,7 +45,7 @@ Follow these steps to predict the category path for a product using pur pretrain
 python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='path/to/BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5
 ```
 
-![](./img/prediction_1.png)
+![](./img/prediction_kurta.png)
 
 Our pre-trained model predicts the category path and displays an output image that shows which part of the image has been focussed by our model to predict the category level.
 
