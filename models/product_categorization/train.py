@@ -11,8 +11,8 @@ from utils import *
 from nltk.translate.bleu_score import corpus_bleu
 
 # Data parameters
-data_folder = '../output'  # folder with data files saved by create_input_files.py
-data_name = 'flickr8k_1_cap_per_img_1_min_word_freq'  # base name shared by data files
+data_folder = '/output'  # folder with data files saved by create_input_files.py
+data_name = 'atlas_1_cap_per_img_1_min_word_freq'  # base name shared by data files
 
 # Model parameters
 emb_dim = 512  # dimension of word embeddings

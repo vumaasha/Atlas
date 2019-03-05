@@ -40,7 +40,6 @@ if __name__ == '__main__':
 
     parser.add_argument('--model', '-m', help='Name of the model - atlas or zvsn')
 
-
     parser.add_argument('--json_path', '-jp', help='Path to json file -  atlas_dataset.json or zvsn_dataset.json')
 
     args = parser.parse_args()
