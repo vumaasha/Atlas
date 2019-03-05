@@ -37,7 +37,7 @@ listed in [`models/product_categorization/requirements.txt`](https://github.com/
 
 ### Predicting using Product Categorization model
 Follow these steps to predict the category path for a product using pur pretrained product categoristion model: 
-1. Download the pre-trained model and the word map file from [Google Drive](https://drive.google.com/drive/folders/1ZKNR2CytY89Q4kDYSwyQlA_pgUdocjeQ).
+1. Download the pre-trained model and the word map file by filling up [this form](https://goo.gl/forms/C1824kjmbuVo7H6H3).
 2. Switch to `models/product_categorization` directory
 3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 

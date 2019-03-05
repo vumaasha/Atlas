@@ -27,6 +27,7 @@ The notebook [here](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_
 - Our CNN model was trained on 6005 normal images and 1054 zoomed images and achieved an f-score of **0.98** on test set. 
 - We applied this model on our **_Atlas_** dataset to filter out the noisy images which has **183,996 images** after cleaning.
 
+You can download our pre-trained model `zoomed_vs_normal.h5` by filling out [this form](https://goo.gl/forms/C1824kjmbuVo7H6H3).
 
 ## Model Architecture
 ![alt text](../../img/atlas_zvsn.png "zvsn architecture")

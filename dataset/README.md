@@ -35,7 +35,7 @@ These images and their corresponding product information were crawled from 13 E-
 To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/data_collection).
 
 ### 1.3 Generating the Dataset
-Download the `atlas_dataset.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
+Download the `atlas_dataset.json` file which contains the URLs of clothing images by filling out [this form](https://goo.gl/forms/C1824kjmbuVo7H6H3).
 
 Then, run the following command to download the images from the URLs onto your local machine.
 
@@ -67,7 +67,7 @@ This will create the dataset in this directory with the following folder structu
 ## 2. Zoomed Vs Normal
 To generate the dataset,
 
-Download the `zvsn_data.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of manually classified Zoomed & Normal images.
+Download the `zvsn_data.json` file by filling out [this form](https://goo.gl/forms/C1824kjmbuVo7H6H3) which contains the URLs of manually classified Zoomed & Normal images.
 
 Then, run the following command to download the images from the URLs into their respective 'zoomed' and 'normal' folders on your local machine.
 
