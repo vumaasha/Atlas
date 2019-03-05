@@ -13,7 +13,7 @@ def create_atlas_dataset():
         file_path = obj['images'][url]['filename'].split('images/')[0]
         image_name = obj['images'][url]['filename'].split('images/')[1]
         script_path = os.path.dirname(os.path.realpath(__file__))
-        file_path = script_path + '/'+ file_path + '/images/'
+        file_path = script_path + '/'+ file_path + 'images/'
         if not os.path.exists(file_path):
             os.makedirs(file_path)
         urllib.request.urlretrieve(image_url, file_path+image_name)
