@@ -7,8 +7,17 @@ cwd = os.getcwd()
 
 
 def create_atlas_dataset():
-
-    pass
+    obj = json.load(open('atlas_dataset.json'))
+    for url in range(len(obj)):
+        image_url = obj['images'][url]['image_url']
+        file_path = '-'.join(obj['images'][url]['sentences'][0]['tokens'])
+        file_path = file_path.replace(" ", "_")
+        image_name = image_url.split('/')[-1]
+        script_path = os.path.dirname(os.path.realpath(__file__))
+        file_path = script_path + '/' + file_path + '/images/'
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+        urllib.request.urlretrieve(image_url, file_path + image_name)
 
 
 def create_zvsn_dataset():
