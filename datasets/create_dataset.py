@@ -7,14 +7,15 @@ cwd = os.getcwd()
 
 
 def create_atlas_dataset():
+
     pass
 
 
 def create_zvsn_dataset():
-    if not os.path.exists("Normal_vs_Zoomed/normal"):
-        os.makedirs("Normal_vs_Zoomed/normal")
-    if not os.path.exists("Normal_vs_Zoomed/zoomed"):
-        os.makedirs("Normal_vs_Zoomed/zoomed")
+    if not os.path.exists("zvsn_dataset/normal"):
+        os.makedirs("zvsn_dataset/normal")
+    if not os.path.exists("zvsn_dataset/zoomed"):
+        os.makedirs("zvsn_dataset/zoomed")
 
     # load list of images from JSON
     with open(cwd+'/zvsn_data.json') as data_file:
@@ -22,7 +23,7 @@ def create_zvsn_dataset():
 
     # download image from URL and save it in corresponding folders
     for img in tqdm(images_data):
-        location = cwd + "/Normal_vs_Zoomed/" +img['label']+ "/" + img['filename']
+        location = cwd + "/zvsn_dataset/" +img['label']+ "/" + img['filename']
         urllib.request.urlretrieve(img['image_url'], location)
 
 

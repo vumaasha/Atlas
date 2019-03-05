@@ -35,13 +35,34 @@ These images and their corresponding product information were crawled from 13 E-
 To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection).
 
 ### 1.3 Generating the Dataset
-Download the `coresdataset19.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
+Download the `atlas_dataset.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
 
 Then, run the following command to download the images from the URLs onto your local machine.
 
 `python create_dataset.py -m atlas` 
 
+This will create the dataset in this directory with the following folder structure. All the images will be present in the images folder under each category.
+```
+|-- atlas_dataset
+|   |-- Men_Ethnic Wear_Bandhgala
+|   |   -- images
+|   |-- Men_Ethnic Wear_Dhoti Kurta
+|   |   -- images
+|   |-- Men_Ethnic Wear_Dhoti Pants
+|   |   -- images
+|   |-- Men_Ethnic Wear_Galabiyyas
+|   |   -- images
+|   |-- Men_Ethnic Wear_Jackets
+|   |   -- images
+|   |-- Men_Ethnic Wear_Kurta
+|   |   -- images
+            .
+            .
+            .
+            .
+```
 ***
+
 
 ## 2. Zoomed Vs Normal
 To generate the dataset,
@@ -52,6 +73,13 @@ Then, run the following command to download the images from the URLs into their 
 
 `python create_dataset.py -m zvsn` 
 
+This will create the dataset in this directory with the following folder structure
+
+```
+|-- zvsn_dataset
+|   |-- normal
+|   |-- zoomed
+```
 ***
 ## 3. Source code - Overview
  
@@ -59,9 +87,9 @@ Then, run the following command to download the images from the URLs into their 
 
 `create_atlas_dataset()` downloads the cleaned clothing images into the dataset folder. 
 
-In the data_collection folder, there are 13 crawlers that were written to crawl images and data associated with it from specific e-commerce clothing websites. When building the dataset, after downloading the images we had to [clean](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal) the dataset. Instead, we have compiled the URLs of the cleaned images we crawled into the `coresdataset19.json` file. 
+In the data_collection folder, there are 13 crawlers that were written to crawl images and data associated with it from specific e-commerce clothing websites. When building the dataset, after downloading the images we had to [clean](https://github.com/vumaasha/Atlas/tree/master/models/zoomed_vs_normal) the dataset. Instead, we have compiled the URLs of the cleaned images we crawled into the `atlas_dataset.json` file. 
 
-Structure of the `coresdataset19.json` file:
+Structure of the `atlas_dataset.json` file:
 
     |-obj : json object
 
