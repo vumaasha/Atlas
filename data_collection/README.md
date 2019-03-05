@@ -52,7 +52,7 @@ The csv file is needed for the crawlers to scrape the product details from the s
 
 ![alt text](https://github.com/vumaasha/Atlas/blob/master/img/atlas_csv_strucure.jpg "sample of the csv file")
 
-For example in from teh image above, 
+For example in the image above, 
 
 The first column is named _Taxonomy_ and contains the category path for a product which is separated by "->". 
 Example: Men-> Western Wear-> Jeans
@@ -103,6 +103,14 @@ To run Selenium crawlers : `python crawler_name.py`
 Example:
 
 `python myntra.py`
+
+### Creating the json
+
+When you run the crawler, each crawler creates a `data.json` file that contains product information associated with each image. To cummulate the data.json files and split the data into Train, Validate and Test, run the script `generate_split_json.py` with
+
+`python generate_split_json.py`
+
+This will inturn create a json file called `atlas_dataset.json`. More details about the structure of this file can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#3-source-code---overview).
 
 ***
 
