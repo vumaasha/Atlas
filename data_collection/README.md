@@ -108,11 +108,11 @@ Example:
 
 ### Creating the json
 
-When you run the crawler, each crawler creates a `data.json` file that contains product information associated with each image. To cummulate the data.json files and split the data into Train, Validate and Test, run the script `generate_split_json.py` with
+When you run the crawler, each crawler creates a `data.json` file for each category that contains product information associated with each image. To cummulate the data.json files into a single file named `atlas_dataset.json` and split the data into Train, Validate and Test to train the [product_categorization model](https://github.com/vumaasha/Atlas/blob/master/models/product_categorization/README.md), run the script `generate_split_json.py` with
 
 `python generate_split_json.py`
 
-This will inturn create a json file called `atlas_dataset.json`. More details about the structure of this file can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#3-source-code---overview).
+This will create a json file called `atlas_dataset.json`. More details about the structure of the `atlas_dataset.json` file can be found [here](https://github.com/vumaasha/Atlas/tree/master/dataset#3-source-code---overview).
 
 ***
 
