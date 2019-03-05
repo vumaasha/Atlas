@@ -56,7 +56,7 @@ class BollywoodKart(scrapy.Spider):
 
         image_file_name = product_image_url.split('/')[-1]
         file_path = response.meta['taxonomy'].replace("->",
-                                                      "_") + "/" + self.source_urls_col + "/images/" + image_file_name
+                                                      "-") + "/" + self.source_urls_col + "/images/" + image_file_name
         dict_of_items['taxonomy'] = response.meta['taxonomy']
         dict_of_items['file_path'] = file_path
         json_path = 'images/' + response.meta['taxonomy'].replace("->",
