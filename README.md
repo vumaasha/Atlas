@@ -42,7 +42,7 @@ Follow these steps to predict the category path for a product using pur pretrain
 3. From the command line, point to the image, model, word map (and optionally, the beam size) as follows:
 
 ```
-python caption_cbs.py --img='../../dataset/atlas_test/sample_1.jpg' --model='path/to/BEST_checkpoint_coco_5_cap_per_img_5_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_coco_5_cap_per_img_5_min_word_freq.json' --beam_size=5
+python caption_cbs.py --img='../../dataset/atlas_test/203_large.jpeg' --model='path/to/BEST_checkpoint_atlas_1_cap_per_img_1_min_word_freq.pth.tar' --word_map='path/to/WORDMAP_atlas_1_cap_per_img_1_min_word_freq.json' --karpathy_json='path/to/atlas_dataset.json' --beam_size=5
 ```
 
 ![](./img/prediction_kurta.png)
@@ -71,7 +71,7 @@ We gathered taxonomy for the clothing top level category from popular Indian e-c
 
 ### Data Collection
 For all categories in taxonomy tree, we collected product data and its images from popular Indian E-commerce stores. Web scraping tools like Scrapy and Selenium were used to extract the product title, breadcrumb, image and price of each product.
-Check out this [section](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection#data-collection) to know more about our data collection strategy for **_Atlas_** dataset.
+Check out this [section](https://github.com/vumaasha/Atlas/tree/master/data_collection) to know more about our data collection strategy for **_Atlas_** dataset.
 
 The dataset, **_Atlas_**, we used for training our model is a high-quality product taxonomy dataset focusing on clothing products. It contains **183,996 images** under 52 clothing categories.
 

@@ -32,7 +32,7 @@ These images and their corresponding product information were crawled from 13 E-
 | # of categories   | 22    | 30     |
 | Total # of images | 61,370 | 122,626 |
 
-To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/dataset/data_collection).
+To know more about our data collection procedure, visit [this link](https://github.com/vumaasha/Atlas/tree/master/data_collection).
 
 ### 1.3 Generating the Dataset
 Download the `atlas_dataset.json` file from [Google drive](https://drive.google.com/file/d/1MLbgQrACPvgxQTCP41FaNZr_gomTXkpu/view?usp=sharing) which contains the URLs of clothing images.
