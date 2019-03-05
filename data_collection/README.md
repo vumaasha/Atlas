@@ -90,17 +90,19 @@ The scraper checks if there is Next Page in the source URL web page, if so, repe
 
 ### Running the crawlers
 
-From the path `../data_collection/`, run the crawler witht he command
+From the command line, switch to the `data_collection/` and run the crawler with the command
 
-`scrapy crawl crawler_name` 
+`scrapy crawl <crawler_name>` 
 
-Replace 'crawler_name' with name of the crawler specified in the respective crawler python file
+Replace '<crawler_name>' with source website's crawler name.
 
 Example:
 
+If you wanted to run the bollywoodkart crawler, run the crawler with the crawler_name as specified in the [file](https://github.com/vumaasha/Atlas/blob/master/data_collection/Crawler/spiders/bollywood_kart.py)
+
 `scrapy crawl bollywoodkart_crawler`
 
-To run Selenium crawlers : `python crawler_name.py`
+Alternatively, if you were to use the websites that use Selenium crawlers, run the following : `python crawler_name.py`
 
 Example:
 
