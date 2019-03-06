@@ -25,7 +25,7 @@ def write_into_json(file_path, dict_of_items):
     # Check if file-path available
     if not os.path.exists(file_path):
         os.makedirs(file_path)
-    file_name = file_path + 'data.json'
+    file_name = os.path.join(file_path ,'data.json')
     with open(file_name, 'a') as outfile:
         if outfile.tell() == 0:
             outfile.write('[')
