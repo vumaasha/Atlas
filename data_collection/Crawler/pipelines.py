@@ -32,6 +32,21 @@ class AmazonPipeline(ImagesPipeline):
             item['image_paths'] = image_paths
             return item
 
+class BollywoodKartPipeline(ImagesPipeline):
+    def file_path(self, request, response=None, info=None):
+        return request.meta['image_path']
+
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(url=item['image_url'], meta=item)
+
+
+class CraftsvillaPipeline(ImagesPipeline):
+    def file_path(self, request, response=None, info=None):
+        return request.meta['image_path']
+
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(url=item['image_url'], meta=item)
+
 
 class FlipkartPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
@@ -47,27 +62,6 @@ class FlipkartPipeline(ImagesPipeline):
         yield scrapy.Request(url=item['image_urls'][0], meta=item)
 
 
-class UtsavFashionPipeline(ImagesPipeline):
-    def file_path(self, request, response=None, info=None):
-        return request.meta['image_path']
-
-    def get_media_requests(self, item, info):
-        yield scrapy.Request(url=item['image_url'], meta=item)
-
-class CraftsvillaPipeline(ImagesPipeline):
-    def file_path(self, request, response=None, info=None):
-        return request.meta['image_path']
-
-    def get_media_requests(self, item, info):
-        yield scrapy.Request(url=item['image_url'], meta=item)
-
-class MirrawPipeline(ImagesPipeline):
-    def file_path(self, request, response=None, info=None):
-        return request.meta['image_path']
-
-    def get_media_requests(self, item, info):
-        yield scrapy.Request(url=item['image_url'], meta=item)
-
 class IndianClothStorePipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
@@ -76,13 +70,6 @@ class IndianClothStorePipeline(ImagesPipeline):
         yield scrapy.Request(url=item['image_url'], meta=item)
 
 
-class IndiaRushPipeline(ImagesPipeline):
-    def file_path(self, request, response=None, info=None):
-        return request.meta['image_path']
-
-    def get_media_requests(self, item, info):
-        yield scrapy.Request(url=item['image_url'], meta=item)
-
 class IndiaEmporiumPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
@@ -90,14 +77,14 @@ class IndiaEmporiumPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         yield scrapy.Request(url=item['image_url'], meta=item)
 
-class BollywoodKartPipeline(ImagesPipeline):
+class IndiaRushPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
 
     def get_media_requests(self, item, info):
         yield scrapy.Request(url=item['image_url'], meta=item)
 
-class ZipkerPipeline(ImagesPipeline):
+class MirrawPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
 
@@ -112,7 +99,23 @@ class SnapdealPipeline(ImagesPipeline):
         yield scrapy.Request(url=item['image_url'], meta=item)
 
 
+class UtsavFashionPipeline(ImagesPipeline):
+    def file_path(self, request, response=None, info=None):
+        return request.meta['image_path']
+
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(url=item['image_url'], meta=item)
+
+
 class VoonikPipeline(ImagesPipeline):
+    def file_path(self, request, response=None, info=None):
+        return request.meta['image_path']
+
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(url=item['image_url'], meta=item)
+
+
+class ZipkerPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
 
