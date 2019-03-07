@@ -9,20 +9,20 @@ from ..Utils import write_into_json
 class Snapdeal(scrapy.Spider):
     name = "snapdeal_crawler"
     custom_settings = {
+        'IMAGES_STORE': '/home/et/Desktop/Atlas/dataset/',
         'ITEM_PIPELINES': {
             'Crawler.pipelines.SnapdealPipeline': 1
         }
     }
 
-    input_csv_file = 'Sheet11.csv'  # csv file containing the taxonomy and website source URL's
     source_urls_col = 'Snapdeal'  # Column name having the source URL's in CSV file
     taxonomy_col = 'Taxonomy'  # Column name having the taxonomy of the product
-    list_of_items = []
-    map_file = pd.read_csv(input_csv_file)
 
     def start_requests(self):
+        input_csv_file = '/home/et/Desktop/Atlas/data_collection/dataset.csv'  # csv file containing the taxonomy and website source URL's
+        map_file = pd.read_csv(input_csv_file)
         start_request_list = []
-        for index, row in self.map_file.dropna(subset=[self.source_urls_col]).iterrows():
+        for index, row in map_file.dropna(subset=[self.source_urls_col]).iterrows():
             taxonomy = row[self.taxonomy_col]
             source_url = row[self.source_urls_col]
             start_request_list.append(scrapy.Request(source_url, callback=self.parse, meta={'taxonomy': taxonomy}))
@@ -39,11 +39,6 @@ class Snapdeal(scrapy.Spider):
             yield scrapy.Request(product_page_url, callback=self.parse_product,
                                  meta={'product_page_url': product_page_url, 'taxonomy': taxonomy})
 
-        # check if next page is available
-        # next_page = response.css('a.next.ic.ic-right::attr(href)').extract_first()
-        # if next_page is not None:
-        #     yield response.follow(next_page, callback=self.parse, meta={'taxonomy': taxonomy})
-
     def parse_product(self, response):
         dict_of_items = {}
         dict_of_items['product_title'] = response.css('h1[itemprop=name]::text').extract_first().strip()
@@ -56,14 +51,15 @@ class Snapdeal(scrapy.Spider):
             dict_of_items[i.split(":")[0]] = i.split(":")[1]
 
         image_file_name = product_image_url.split('/')[-1]
-        file_path = response.meta['taxonomy'].replace("->",
-                                                      "/") + "/" + self.source_urls_col + '/images/'+ image_file_name
+        temp_taxonomy = response.meta['taxonomy'].replace(" ", "_")
+        file_path = 'atlas_dataset/' + temp_taxonomy.replace("->",
+                                                             "-") + "/images/" + image_file_name
         dict_of_items['file_path'] = file_path
         dict_of_items['product_page_url'] = response.meta['product_page_url']
         dict_of_items['taxonomy'] = response.meta['taxonomy']
 
-        json_path = 'images/'+response.meta['taxonomy'].replace("->",
-                                                      "/") + "/" + self.source_urls_col + '/'
+        json_path = '/home/et/Desktop/Atlas/dataset/atlas_dataset/' + temp_taxonomy.replace("->",
+                                                                                            "-") + "/"
         write_into_json(json_path,dict_of_items)
 
         yield SnapdealItem(image_url=product_image_url, image_name=image_file_name, image_path=file_path)
