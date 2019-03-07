@@ -9,33 +9,33 @@ from ..items import VoonikItem
 class Voonik(scrapy.Spider):
     name = "voonik_crawler"
     custom_settings = {
+        'IMAGES_STORE': '/home/et/Desktop/Atlas/dataset/',
         'ITEM_PIPELINES': {
             'Crawler.pipelines.VoonikPipeline': 1
         }
     }
 
-    input_csv_file = 'Sheet11.csv'  # csv file containing the taxonomy and website source URL's
     source_urls_col = 'Voonik'  # Column name having the source URL's in CSV file
     taxonomy_col = 'Taxonomy'  # Column name having the taxonomy of the product
 
-    map_file = pd.read_csv(input_csv_file)
 
     def start_requests(self):
+        input_csv_file = '/home/et/Desktop/Atlas/data_collection/dataset.csv'  # csv file containing the taxonomy and website source URL's
+        map_file = pd.read_csv(input_csv_file)
         start_request_list = []
-        for index, row in self.map_file.dropna(subset=[self.source_urls_col]).iterrows():
+        for index, row in map_file.dropna(subset=[self.source_urls_col]).iterrows():
             taxonomy = row[self.taxonomy_col]
             source_url = row[self.source_urls_col]
             start_request_list.append(scrapy.Request(source_url, callback=self.parse, meta={'taxonomy': taxonomy}))
         return start_request_list
 
     def parse(self, response):
-        # all_items = response.css('li.col-xs-4.col-sm-4 a.image-link.voonik-image-link::attr(href)').extract()
-        # self.logger.info('All items for {} is {}'.format(response.meta['taxonomy'], len(all_items)))
+
         all_items = []
         total = response.css('div.flex.feed-item-title span::text').extract()
         total_products = [num for num in total if num.isdigit()]
         total_products = int(total_products[0])
-        # total_products = 48
+
         page_limit = int(total_products/24) + 1
         pages = list(range(1,page_limit))
         for p in pages:
@@ -54,13 +54,6 @@ class Voonik(scrapy.Spider):
             yield scrapy.Request(product_page_url, callback=self.parse_product,
                                  meta={'product_page_url': product_page_url, 'taxonomy': taxonomy})
 
-        # check if next page is available
-        # next_page = response.css('ul.pagination.display-flex.align-items-center.justify-center a[title=Next]::attr(href)').extract_first()
-        # if next_page is not None:
-        #     next_page = response._url.split('?')[0] + next_page
-        #     yield response.follow(next_page, callback=self.parse, meta={'taxonomy': taxonomy})
-
-    # https://www.voonik.com/women-clothing/women-sarees.json?limit=24&page=5
     def parse_product(self, response):
         dict_of_items = {}
         dict_of_items['product_title'] = response.css('div.pdp-det-box h1::text').extract_first()
@@ -77,11 +70,13 @@ class Voonik(scrapy.Spider):
             dict_of_items[head] = body
         image_file_name = product_image_url.split('/')[-1]
         dict_of_items['taxonomy'] = response.meta['taxonomy']
-        file_path = response.meta['taxonomy'].replace("->",
-                                                      "/") + "/" + self.source_urls_col + "/images/" + image_file_name
+        temp_taxonomy = response.meta['taxonomy'].replace(" ", "_")
+        file_path = 'atlas_dataset/' + temp_taxonomy.replace("->",
+                                                             "-") + "/images/" + image_file_name
+
         dict_of_items['file_path'] = file_path
-        json_path = 'images/' + response.meta['taxonomy'].replace("->",
-                                                                  "/") + "/" + self.source_urls_col + '/'
+        json_path = '/home/et/Desktop/Atlas/dataset/atlas_dataset/' + temp_taxonomy.replace("->",
+                                                                                            "-") + "/"
         write_into_json(json_path,dict_of_items)
 
         yield VoonikItem(image_url=product_image_url, image_name=image_file_name, image_path=file_path)
