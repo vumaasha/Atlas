@@ -219,6 +219,7 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True):
     :param rev_word_map: reverse word mapping, i.e. ix2word
     :param smooth: smooth weights?
     """
+    print("Starting to visualise attention")
     image = Image.open(image_path)
     image = image.resize([14 * 24, 14 * 24], Image.LANCZOS)
 
@@ -242,7 +243,11 @@ def visualize_att(image_path, seq, alphas, rev_word_map, smooth=True):
             plt.imshow(alpha, alpha=0.8)
         plt.set_cmap(cm.Greys_r)
         plt.axis('off')
-    plt.show()
+
+    print("Starting to plot attention")
+    plt.savefig('prediction_result.png')
+    print("Attention Image saved")
+    # plt.show()
 
 
 if __name__ == '__main__':

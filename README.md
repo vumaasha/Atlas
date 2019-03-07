@@ -13,6 +13,7 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 - [Getting started](#getting-started)
     - [Setting up the project](#setting-up-the-project)
     - [Predicting using Product Categorization model](#predicting-using-product-categorization-model)
+    - [Docker Instructions](#docker-instructions)
 - [Concepts Overview](#concepts-overview)
 - [Implementation](#implementation)
     - [Taxonomy Generation](#taxonomy-generation)
@@ -53,6 +54,21 @@ Similarly you can predict for other images using this command, by changing the p
 
 Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization#sample-predictions)
 
+### Docker Instructions
+To pull and build the image, use:
+```
+docker pull vumaasha2/altas-docker
+```
+
+Place `atlas_dataset.json`, wordmap file and pre trained model in your local directory and run the container. Replace `</path/to/data>` with the local directory path. The following line creates a container, mounts the folder into the container and names it atlas, so you can easily refer to this later
+```
+docker run -it -v </path/to/data>:/data --name atlas -d vumaasha2/altas-docker
+```
+
+To execute the command inside the running container
+```
+docker exec -ti atlas python /Atlas/models/product_categorization/caption_cbs.py --img='/Atlas/dataset/atlas_test/203_large.jpeg' --model='/data/BEST_checkpoint_atlas_1_cap_per_img_1_min_word_freq.pth.tar' --word_map='/data/WORDMAP_atlas_1_cap_per_img_1_min_word_freq.json' --karpathy_json='/data/atlas_dataset.json' --beam_size=5
+```
 
 ## Concepts Overview
 We use attention based neural network Encoder-Decoder model to generate the sequences in the taxonomy. 
