@@ -13,7 +13,7 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 - [Getting started](#getting-started)
     - [Setting up the project](#setting-up-the-project)
     - [Predicting using Product Categorization model](#predicting-using-product-categorization-model)
-    - [Docker Instructions](#docker-instructions)
+- [Docker Instructions](#docker-instructions)
 - [Concepts Overview](#concepts-overview)
 - [Implementation](#implementation)
     - [Taxonomy Generation](#taxonomy-generation)
@@ -54,21 +54,33 @@ Similarly you can predict for other images using this command, by changing the p
 
 Few more sample predictions can be found in this [section](https://github.com/vumaasha/Atlas/tree/master/models/product_categorization#sample-predictions)
 
-### Docker Instructions
+## Docker Instructions
+### Pull Docker image
 To pull and build the image, use:
 ```
 docker pull vumaasha2/altas-docker
 ```
-
-Place `atlas_dataset.json`, wordmap file and pre trained model in your local directory and run the container. Replace `</path/to/data>` with the local directory path. The following line creates a container, mounts the folder into the container and names it atlas, so you can easily refer to this later
+### Run Docker Container and mount local directory
+Place all the required data (`atlas_dataset.json`, wordmap file and pre trained model) in a local directory. To start a container and mount local dorectory in it, replace `</path/to/data>` with the local directory path in the command shown below. The following line starts a container, mounts the folder in a folder named `data` in the container and names the container `atlas`, so you can easily refer to this later
 ```
 docker run -it -v </path/to/data>:/data --name atlas -d vumaasha2/altas-docker
 ```
+### Access container terminal and execute commands
+To open the terminal inside the running container and execute the commands: 
+```
+docker exec -ti atlas bash
+```
+In the terminal, run this command to generate predictions for train, test and validation splits in `atlas_dataset.json` and get the classification metrics
 
-To execute the command inside the running container
 ```
-docker exec -ti atlas python /Atlas/models/product_categorization/caption_cbs.py --img='/Atlas/dataset/atlas_test/203_large.jpeg' --model='/data/BEST_checkpoint_atlas_1_cap_per_img_1_min_word_freq.pth.tar' --word_map='/data/WORDMAP_atlas_1_cap_per_img_1_min_word_freq.json' --karpathy_json='/data/atlas_dataset.json' --beam_size=5
+python /Atlas/models/product_categorization/generate_metrics.py
 ```
+
+To predict the category for an sample image and see the attention image:
+```
+python /Atlas/models/product_categorization/caption_cbs.py --img='/Atlas/dataset/atlas_test/203_large.jpeg' --model='/data/BEST_checkpoint_atlas_1_cap_per_img_1_min_word_freq.pth.tar' --word_map='/data/WORDMAP_atlas_1_cap_per_img_1_min_word_freq.json' --karpathy_json='/data/atlas_dataset.json' --beam_size=5
+```
+This will predict the category path and store the attention image in your local directory which you mounted into this container. You can see the image in the local directory path. To predict for other images, change the path in `--img` parameter to point to your image location
 
 ## Concepts Overview
 We use attention based neural network Encoder-Decoder model to generate the sequences in the taxonomy. 
