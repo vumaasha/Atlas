@@ -1,9 +1,7 @@
 import pandas as pd
 import requests
 import scrapy
-from tqdm import tqdm
 import re
-from scrapy.utils.project import get_project_settings
 from ..Utils import write_into_json
 from ..items import IndiaRushItem
 
@@ -16,15 +14,15 @@ class IndiaRush(scrapy.Spider):
         }
     }
 
-    source_urls_col = 'IndiaRush'  # Column name having the source URL's in CSV file
+    source_urls_col = 'indiarush'  # Column name having the source URL's in CSV file
     taxonomy_col = 'Taxonomy'  # Column name having the taxonomy of the product
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self,input_csv_path="",*args, **kwargs):
         super(IndiaRush, self).__init__(*args, **kwargs)
+        self.input_csv_path = input_csv_path
 
     def start_requests(self):
-        input_csv_file = '/home/et/Desktop/Atlas/data_collection/dataset.csv'  # csv file containing the taxonomy and website source URL's
-        map_file = pd.read_csv(input_csv_file)
+        map_file = pd.read_csv(self.input_csv_path)
         start_request_list = []
         for index, row in map_file.dropna(subset=[self.source_urls_col]).iterrows():
             taxonomy = row[self.taxonomy_col]
@@ -33,9 +31,10 @@ class IndiaRush(scrapy.Spider):
         return start_request_list
 
     def parse(self, response):
-        all_items = response.css('div.category-products a.product-image.product-page-click-category::attr(href)').extract()
-        self.logger.info('All items for {} is {}'.format(response.meta['taxonomy'], len(all_items)))
-        for product_page_url in all_items:
+        #gets list of product page urls from source url specified
+        all_items_in_url = response.css('div.category-products a.product-image.product-page-click-category::attr(href)').extract()
+        self.logger.info('All items for {} is {}'.format(response.meta['taxonomy'], len(all_items_in_url)))
+        for product_page_url in all_items_in_url:
             taxonomy = response.meta['taxonomy']
             yield scrapy.Request(product_page_url, callback=self.parse_product,
                                  meta={'product_page_url': product_page_url, 'taxonomy': taxonomy})
@@ -46,25 +45,27 @@ class IndiaRush(scrapy.Spider):
             yield response.follow(next_page, callback=self.parse, meta={'taxonomy': taxonomy})
 
     def parse_product(self, response):
-        dict_of_items = {}
-        dict_of_items['product_title'] = response.css('div.product-shop h1::text').extract_first()
-        dict_of_items['product_price'] = re.sub('\s+','',response.css('div.product-prices-wrapper span#regular_price_id::text').extract_first())
+        #Parses each product page and retrieves product details
+        product_details = {}
+        product_details['product_title'] = response.css('div.product-shop h1::text').extract_first()
+        product_details['product_price'] = re.sub('\s+','',response.css('div.product-prices-wrapper span#regular_price_id::text').extract_first())
         product_image_url = response.css('div#slider-image-brick img::attr(src)').extract_first()
-        dict_of_items['product_image_url'] = product_image_url
-        dict_of_items['product_page_url'] = response.meta['product_page_url']
-        list_of_specs = response.css('div#detail-left p::text').extract()
-        for i in range(0, len(list_of_specs) - 1, 2):
-            dict_of_items[re.sub(':', ' ', list_of_specs[i])] = list_of_specs[i+1]
+        product_details['product_image_url'] = product_image_url
+        product_details['product_page_url'] = response.meta['product_page_url']
+        product_specs_list = response.css('div#detail-left p::text').extract()
+        for i in range(0, len(product_specs_list) - 1, 2):
+            product_details[re.sub(':', ' ', product_specs_list[i])] = product_specs_list[i+1]
         image_file_name = product_image_url.split('/')[-1]
         temp_taxonomy = response.meta['taxonomy'].replace(" ","_")
         file_path = 'atlas_dataset/'+temp_taxonomy.replace("->",
                                                       "-") + "/images/" + image_file_name
-        dict_of_items['file_path'] = file_path
-        dict_of_items['taxonomy'] = response.meta['taxonomy']
-        # settings = get_project_settings()
+        product_details['file_path'] = file_path
+        product_details['taxonomy'] = response.meta['taxonomy']
+
+        #Writes product page details into json file called data.json
         json_path = self.settings.get('IMAGES_STORE')+'atlas_dataset/'+temp_taxonomy.replace("->",
                                                       "-") + "/"
-        write_into_json(json_path,dict_of_items)
+        write_into_json(json_path,product_details)
 
         yield IndiaRushItem(image_url=product_image_url, image_name=image_file_name, image_path=file_path)
 
