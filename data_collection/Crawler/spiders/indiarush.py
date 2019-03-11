@@ -3,23 +3,24 @@ import requests
 import scrapy
 from tqdm import tqdm
 import re
+from scrapy.utils.project import get_project_settings
 from ..Utils import write_into_json
 from ..items import IndiaRushItem
 
 class IndiaRush(scrapy.Spider):
     name = "indiarush_crawler"
     custom_settings = {
-        'IMAGES_STORE': '/home/et/Desktop/Atlas/dataset/',
+        'IMAGES_STORE': '',
         'ITEM_PIPELINES': {
             'Crawler.pipelines.IndiaRushPipeline': 1
         }
     }
 
-
     source_urls_col = 'IndiaRush'  # Column name having the source URL's in CSV file
     taxonomy_col = 'Taxonomy'  # Column name having the taxonomy of the product
 
-
+    def __init__(self, *args, **kwargs):
+        super(IndiaRush, self).__init__(*args, **kwargs)
 
     def start_requests(self):
         input_csv_file = '/home/et/Desktop/Atlas/data_collection/dataset.csv'  # csv file containing the taxonomy and website source URL's
@@ -60,8 +61,8 @@ class IndiaRush(scrapy.Spider):
                                                       "-") + "/images/" + image_file_name
         dict_of_items['file_path'] = file_path
         dict_of_items['taxonomy'] = response.meta['taxonomy']
-
-        json_path = '/home/et/Desktop/Atlas/dataset/atlas_dataset/'+temp_taxonomy.replace("->",
+        # settings = get_project_settings()
+        json_path = self.settings.get('IMAGES_STORE')+'atlas_dataset/'+temp_taxonomy.replace("->",
                                                       "-") + "/"
         write_into_json(json_path,dict_of_items)
 
