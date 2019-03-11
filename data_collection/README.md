@@ -21,7 +21,7 @@ To perform web scraping, we used: [Scrapy](https://scrapy.org/) and [Selenium](h
 
 Most of our crawlers use Scrapy except in the case of one crawler where we used Selenium to scrape data from dynamic web pages.
 
-|Source Website| Crawler Name           | Scrapy | Selenium |
+|Source Website| Crawler file name           | Scrapy | Selenium |
 |-------------|--------------------------|--------|----------|
 |[Amazon](https://www.amazon.in/)| Amazon.py                | :heavy_check_mark:  |   :x:       |
 |[Flipkart](https://www.flipkart.com/)| Flipkart.py              | :heavy_check_mark:  |    :x:      |
@@ -64,7 +64,7 @@ The remaining columns are named after the crawler and the rows are filled with t
 Each of the crawlers follow these steps while scraping images from a URL
 
 **Step 1:**
-Parse the input csv file `crawler_datasett.csv` to obtain the source URL of website to be scraped
+Parse the input csv file `crawler_dataset.csv` to obtain the source URL of website to be scraped
 
 **Step 2:**
 At each iteration, scraper visits each product page URL starting from the source URL and scrapes the following information and stores it into a dictionary
@@ -92,15 +92,15 @@ The scraper checks if there is Next Page in the source URL web page, if so, repe
 
 From the command line, switch to the `data_collection/` and run the crawler with the command
 
-`scrapy crawl <crawler_name>` 
+`scrapy crawl <crawler_name> -s IMAGES_STORE=<path/to/store/images/files> -a input_csv_path=<path/to/input/csv/file/of/urls/atlas_dataset.csv>` 
 
 Replace '<crawler_name>' with source website's crawler name.
 
 Example:
 
-If you wanted to run the bollywoodkart crawler, run the crawler with the crawler_name as specified in the [file](https://github.com/vumaasha/Atlas/blob/master/data_collection/Crawler/spiders/bollywood_kart.py)
+If you wanted to run the indiarush crawler, run the crawler with the crawler_name as specified in the [file](https://github.com/vumaasha/Atlas/blob/master/data_collection/Crawler/spiders/bollywood_kart.py)
 
-`scrapy crawl bollywoodkart_crawler`
+`scrapy crawl indiarush_crawler -s IMAGES_STORE=/home/Desktop/Atlas/ -a input_csv_path=/home/Desktop/Atlas/data_collection/dataset.csv`
 
 Alternatively, if you were to use the websites that use Selenium crawlers, run the following : `python crawler_name.py`
 
