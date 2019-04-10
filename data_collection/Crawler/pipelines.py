@@ -32,7 +32,7 @@ class AmazonPipeline(ImagesPipeline):
             item['image_paths'] = image_paths
             return item
 
-class BollywoodKartPipeline(ImagesPipeline):
+class BollywoodkartPipeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         return request.meta['image_path']
 

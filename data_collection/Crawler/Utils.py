@@ -21,7 +21,7 @@ class ipReader:
                 self.category_title[row[0]] = row[1]
                 self.category_path[row[0]] = row[2]
 
-def write_into_json(file_path, dict_of_items):
+def write_into_json(file_path, path):
     # Check if file-path available
     if not os.path.exists(file_path):
         os.makedirs(file_path)
@@ -29,7 +29,7 @@ def write_into_json(file_path, dict_of_items):
     with open(file_name, 'a') as outfile:
         if outfile.tell() == 0:
             outfile.write('[')
-            json.dump(dict_of_items, outfile)
+            json.dump(path, outfile)
             outfile.write(']')
 
         else:
@@ -37,5 +37,5 @@ def write_into_json(file_path, dict_of_items):
             outfile.seek(outfile.tell() - 1, os.SEEK_SET)
             outfile.truncate()
             outfile.write(',')
-            json.dump(dict_of_items, outfile)
+            json.dump(path, outfile)
             outfile.write(']')

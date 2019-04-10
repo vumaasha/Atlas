@@ -62,7 +62,7 @@ class Zipker(scrapy.Spider):
         for spec in product_specs:
             spec_split = spec.split(":")
             if len(spec_split) > 1:
-                product_details[spec_split[0]] = spec_split[1]
+                product_details['product_info'] = spec_split[1]
         product_details.pop('Note',None)
 
         image_file_name = product_image_url.split('/')[-1]
@@ -73,8 +73,8 @@ class Zipker(scrapy.Spider):
         product_details['file_path'] = file_path
 
         # Writes product page details into json file called data.json
-        json_path = '/home/et/Desktop/Atlas/dataset/atlas_dataset/' + temp_taxonomy.replace("->",
-                                                                                            "-") + "/"
+        json_path = self.settings.get('IMAGES_STORE') + 'atlas_dataset/' + temp_taxonomy.replace("->",
+                                                                                                 "-") + "/"
         write_into_json(json_path,product_details)
 
         yield ZipkerItem(image_url=product_image_url, image_name=image_file_name, image_path=file_path)
