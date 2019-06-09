@@ -6,6 +6,8 @@ Source code of our paper "Constrained Beam Search Based Sequence model for produ
 * Performs automatic taxonomy prediction of Clothing images
 * Provides a dataset of 183,996 clothing images from 52 categories along with image description and pre-defined taxonomy
 
+[![Download dataset](./img/button_download-atlas-dataset.png)](https://goo.gl/forms/C1824kjmbuVo7H6H3)       [![Download Model](./img/button_download-atlas-model.png)](https://goo.gl/forms/C1824kjmbuVo7H6H3)
+
 :star: Star us on GitHub — it helps!
 
 ## Table of contents
