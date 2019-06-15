@@ -1,6 +1,6 @@
-# Atlas
+# Atlas: A Dataset and Benchmark for E-commerce Clothing Product Categorization
 
-Source code of our paper "Atlas: A Dataset and Benchmark for E-commerce Clothing Product Categorization" runnable on GPU and CPU. You can clone and run this project in your CPU/GPU to mimic the results reported in the paper.
+Here you can get the dataset, source code pre-trained models of our paper runnable on GPU and CPU. You can clone and run this project in your CPU/GPU to reproduce the results reported in the paper.
 
 ## What does this project do?
 * Performs automatic taxonomy prediction of Clothing images
