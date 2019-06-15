@@ -1,6 +1,6 @@
 # Atlas
 
-Source code of our paper "Constrained Beam Search Based Sequence model for product category classification" runnable on GPU and CPU. You can clone and run this project in your CPU/GPU to mimic the results reported in the paper.
+Source code of our paper "Atlas: A Dataset and Benchmark for E-commerce Clothing Product Categorization" runnable on GPU and CPU. You can clone and run this project in your CPU/GPU to mimic the results reported in the paper.
 
 ## What does this project do?
 * Performs automatic taxonomy prediction of Clothing images
