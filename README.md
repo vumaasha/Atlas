@@ -1,6 +1,6 @@
 # Atlas: A Dataset and Benchmark for E-commerce Clothing Product Categorization
 
-Here you can get the dataset, source code pre-trained models of our paper runnable on GPU and CPU. You can clone and run this project in your CPU/GPU. We have dockerized our environment so that you can easily reproduce the results reported in the paper.
+Here you can get the dataset, source code pre-trained models of our paper runnable on GPU and CPU. You can clone and run this project in your CPU/GPU. We have dockerized our environment so that you can easily reproduce the results reported in the paper. For a broader overview, read more in our [paper](https://arxiv.org/abs/1908.08984) and check out our presentation at "The 2020 SIGIR Workshop On eCommerce" [here](https://youtu.be/k-7Vp7QkTEI). 
 
 ## What does this project do?
 * Performs automatic taxonomy prediction of Clothing images
@@ -145,7 +145,7 @@ More details and procedures on model training can be found [here](https://github
 See also the list of [contributors](https://github.com/vumaasha/Atlas/graphs/contributors) who participated in this project.
 
 ## Acknowledgements
-
+We thank Krishna Sangeeth, Sriram Ramachandrasekaran, Anirudh Venkataraman, Manoj Mahalingam, Rajesh Muppalla, and Sridhar Venkatesh for their help and support.
 
 ## Reference
 If you use this code as part of any published research, please acknowledge the following paper (it encourages researchers who publish their code!)
