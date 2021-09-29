@@ -1,7 +1,7 @@
 Pillow==5.4.1
 h5py==2.9.0
 matplotlib==3.0.3
-nltk==3.4
+nltk==3.6.3
 numpy==1.16.2
 pandas==0.24.1
 scipy==1.2.1
